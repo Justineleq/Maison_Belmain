@@ -1,0 +1,11 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}New RecipeOfTheMonth{% endblock %}
+
+{% block body %}
+    <h1>Create new RecipeOfTheMonth</h1>
+
+    {{ include('recipe_of_the_month/_form.html.twig') }}
+
+    <a href="{{ path('app_recipe_of_the_month_index') }}">back to list</a>
+{% endblock %}
