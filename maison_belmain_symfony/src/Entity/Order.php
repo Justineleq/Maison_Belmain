@@ -31,7 +31,7 @@ class Order
 
     #[ORM\ManyToOne(inversedBy: 'orders')]
     #[ORM\JoinColumn(nullable: false)]
-    private ?statusOrder $statusOrder = null;
+    private ?OrderStatus $orderStatus = null;
 
     public function __construct()
     {
@@ -92,14 +92,14 @@ class Order
         return $this;
     }
 
-    public function getStatusOrder(): ?statusOrder
+    public function getOrderStatus(): ?OrderStatus
     {
-        return $this->statusOrder;
+        return $this->orderStatus;
     }
 
-    public function setStatusOrder(?statusOrder $statusOrder): static
+    public function setOrderStatus(?OrderStatus $orderStatus): static
     {
-        $this->statusOrder = $statusOrder;
+        $this->orderStatus = $orderStatus;
 
         return $this;
     }

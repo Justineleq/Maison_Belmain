@@ -2,22 +2,22 @@
 
 namespace App\Repository;
 
-use App\Entity\StatusContact;
+use App\Entity\OrderStatus;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Doctrine\Persistence\ManagerRegistry;
 
 /**
- * @extends ServiceEntityRepository<StatusContact>
+ * @extends ServiceEntityRepository<OrderStatus>
  */
-class StatusContactRepository extends ServiceEntityRepository
+class OrderStatusRepository extends ServiceEntityRepository
 {
     public function __construct(ManagerRegistry $registry)
     {
-        parent::__construct($registry, StatusContact::class);
+        parent::__construct($registry, OrderStatus::class);
     }
 
     //    /**
-    //     * @return StatusContact[] Returns an array of StatusContact objects
+    //     * @return OrderStatus[] Returns an array of OrderStatus objects
     //     */
     //    public function findByExampleField($value): array
     //    {
@@ -31,7 +31,7 @@ class StatusContactRepository extends ServiceEntityRepository
     //        ;
     //    }
 
-    //    public function findOneBySomeField($value): ?StatusContact
+    //    public function findOneBySomeField($value): ?OrderStatus
     //    {
     //        return $this->createQueryBuilder('s')
     //            ->andWhere('s.exampleField = :val')

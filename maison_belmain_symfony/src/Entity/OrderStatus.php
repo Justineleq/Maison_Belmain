@@ -2,13 +2,13 @@
 
 namespace App\Entity;
 
-use App\Repository\StatusOrderRepository;
+use App\Repository\OrderStatusRepository;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 
-#[ORM\Entity(repositoryClass: StatusOrderRepository::class)]
-class StatusOrder
+#[ORM\Entity(repositoryClass: OrderStatusRepository::class)]
+class OrderStatus
 {
     #[ORM\Id]
     #[ORM\GeneratedValue]
@@ -21,7 +21,7 @@ class StatusOrder
     /**
      * @var Collection<int, Order>
      */
-    #[ORM\OneToMany(targetEntity: Order::class, mappedBy: 'statusOrder')]
+    #[ORM\OneToMany(targetEntity: Order::class, mappedBy: 'orderStatus')]
     private Collection $orders;
 
     public function __construct()
@@ -58,7 +58,7 @@ class StatusOrder
     {
         if (!$this->orders->contains($order)) {
             $this->orders->add($order);
-            $order->setStatusOrder($this);
+            $order->setOrderStatus($this);
         }
 
         return $this;
@@ -68,8 +68,8 @@ class StatusOrder
     {
         if ($this->orders->removeElement($order)) {
             // set the owning side to null (unless already changed)
-            if ($order->getStatusOrder() === $this) {
-                $order->setStatusOrder(null);
+            if ($order->getOrderStatus() === $this) {
+                $order->setOrderStatus(null);
             }
         }
 
