@@ -18,6 +18,7 @@ class Flavour
     #[ORM\Column(length: 255)]
     private ?string $name = null;
 
+
     /**
      * @var Collection<int, Product>
      */
@@ -44,6 +45,11 @@ class Flavour
         $this->name = $name;
 
         return $this;
+    }
+
+    
+    public function __toString() {
+        return $this->name;
     }
 
     /**

@@ -9,8 +9,9 @@
         <thead>
             <tr>
                 <th>Id</th>
-                <th>SpecificNeeds</th>
-                <th>TotalPrice</th>
+                <th>Specific Needs</th>
+                <th>Total Price</th>
+                <th>Order Status</th>
                 <th>actions</th>
             </tr>
         </thead>
@@ -20,7 +21,7 @@
                 <td>{{ order.id }}</td>
                 <td>{{ order.specificNeeds }}</td>
                 <td>{{ order.totalPrice }}</td>
-                <td>{{ order.totalPrice }}</td>
+                <td>{{ order.orderStatus }}</td>
                 <td>
                     <a href="{{ path('app_order_show', {'id': order.id}) }}" class="btn btn-warning">show</a>
                     <a href="{{ path('app_order_edit', {'id': order.id}) }}" class="btn btn-info">edit</a>
