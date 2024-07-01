@@ -16,12 +16,6 @@ class Product
     #[ORM\Column]
     private ?int $id = null;
 
-    #[ORM\Column]
-    private ?int $flavour = null;
-
-    #[ORM\Column]
-    private ?int $quantity = null;
-
     #[ORM\Column(length: 255)]
     private ?string $image = null;
 
@@ -37,6 +31,12 @@ class Product
     #[ORM\ManyToMany(targetEntity: Order::class, mappedBy: 'Product')]
     private Collection $orders;
 
+    #[ORM\ManyToOne(inversedBy: 'Product')]
+    private ?Flavour $flavour = null;
+
+    #[ORM\ManyToOne(inversedBy: 'Product')]
+    private ?Quantity $quantity = null;
+
     public function __construct()
     {
         $this->orders = new ArrayCollection();
@@ -45,30 +45,6 @@ class Product
     public function getId(): ?int
     {
         return $this->id;
-    }
-
-    public function getFlavour(): ?int
-    {
-        return $this->flavour;
-    }
-
-    public function setFlavour(int $flavour): static
-    {
-        $this->flavour = $flavour;
-
-        return $this;
-    }
-
-    public function getQuantity(): ?int
-    {
-        return $this->quantity;
-    }
-
-    public function setQuantity(int $quantity): static
-    {
-        $this->quantity = $quantity;
-
-        return $this;
     }
 
     public function getImage(): ?string
@@ -130,6 +106,30 @@ class Product
         if ($this->orders->removeElement($order)) {
             $order->removeProduct($this);
         }
+
+        return $this;
+    }
+
+    public function getFlavour(): ?Flavour
+    {
+        return $this->flavour;
+    }
+
+    public function setFlavour(?Flavour $flavour): static
+    {
+        $this->flavour = $flavour;
+
+        return $this;
+    }
+
+    public function getQuantity(): ?Quantity
+    {
+        return $this->quantity;
+    }
+
+    public function setQuantity(?Quantity $quantity): static
+    {
+        $this->quantity = $quantity;
 
         return $this;
     }
