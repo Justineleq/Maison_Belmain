@@ -3,10 +3,8 @@
 namespace App\Controller;
 
 use App\Entity\Order;
-use App\Entity\Product;
 use App\Form\OrderType;
 use App\Repository\OrderRepository;
-use App\Service\PricingService;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
@@ -17,8 +15,7 @@ use Symfony\Component\Security\Http\Attribute\IsGranted;
 #[Route('/order', name: 'app_order_')]
 class OrderController extends AbstractController
 {
-    private $entityManager;
-    private $pricingService;
+
 
     #[IsGranted('ROLE_ADMIN')]
     #[Route('s', name: 'index', methods: ['GET'])]
@@ -29,26 +26,26 @@ class OrderController extends AbstractController
         ]);
     }
 
-    #[IsGranted('ROLE_ADMIN')]
-    #[Route('/new', name: 'new', methods: ['GET', 'POST'])]
-    public function new(Request $request, EntityManagerInterface $entityManager): Response
-    {
-        $order = new Order();
-        $form = $this->createForm(OrderType::class, $order);
-        $form->handleRequest($request);
+    // #[IsGranted('ROLE_ADMIN')]
+    // #[Route('/new', name: 'new', methods: ['GET', 'POST'])]
+    // public function new(Request $request, EntityManagerInterface $entityManager): Response
+    // {
+    //     $order = new Order();
+    //     $form = $this->createForm(OrderType::class, $order);
+    //     $form->handleRequest($request);
 
-        if ($form->isSubmitted() && $form->isValid()) {
-            $entityManager->persist($order);
-            $entityManager->flush();
+    //     if ($form->isSubmitted() && $form->isValid()) {
+    //         $entityManager->persist($order);
+    //         $entityManager->flush();
 
-            return $this->redirectToRoute('app_order_index', [], Response::HTTP_SEE_OTHER);
-        }
+    //         return $this->redirectToRoute('app_order_index', [], Response::HTTP_SEE_OTHER);
+    //     }
 
-        return $this->render('order/new.html.twig', [
-            'order' => $order,
-            'form' => $form,
-        ]);
-    }
+    //     return $this->render('order/new.html.twig', [
+    //         'order' => $order,
+    //         'form' => $form,
+    //     ]);
+    // }
     
     #[IsGranted('ROLE_ADMIN')]
     #[Route('/{id}', name: 'show', methods: ['GET'])]
@@ -89,33 +86,7 @@ class OrderController extends AbstractController
 
         return $this->redirectToRoute('app_order_index', [], Response::HTTP_SEE_OTHER);
     }
-    // public function __construct(EntityManagerInterface $entityManager, PricingService $pricingService)
-    // {
-    //     $this->entityManager = $entityManager;
-    //     $this->pricingService = $pricingService;
-    // }
-    //  /**
-    //  * @Route("/order/create", name="create_order")
-    //  */
-    //    /**
-    //  * @Route("/product/update", name="update_product")
-    //  */
-    // public function updateProduct(Request $request): Response
-    // {
-    //     // Fetch product (this can be from the request or your business logic)
-    //     $product = $this->entityManager->getRepository(Product::class)->find($request->get('product_id'));
-    //     $quantity = $product->getQuantity();
-    //     $basePrice = $product->getPrice();
 
-    //     // Calculate the final price
-    //     $finalPrice = $this->pricingService->calculatePrice($quantity, $basePrice);
-
-    //     // Update the product with the final price
-    //     $product->setFinalPrice($finalPrice);
-    //     $this->entityManager->flush();
-
-    //     return new Response('Product updated with final price: ' . $finalPrice);
-    // }
 
 
 }

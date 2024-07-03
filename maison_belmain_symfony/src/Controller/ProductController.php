@@ -45,14 +45,11 @@ class ProductController extends AbstractController
             // Calculate the final price
             $finalPrice = $this->pricingService->calculatePrice($quantity, $basePrice);
 
-            $product->setFinalPrice($finalPrice);
+            $product->setFinalPrice(number_format($finalPrice, 2));
 
             $entityManager->persist($product);
             $entityManager->flush();
 
-            $this->addFlash(
-                'notice',
-                'Your changes were saved!');
 
             return $this->redirectToRoute('app_product_index', [], Response::HTTP_SEE_OTHER);
         }

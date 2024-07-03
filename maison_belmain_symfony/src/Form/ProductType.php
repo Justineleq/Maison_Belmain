@@ -3,10 +3,8 @@
 namespace App\Form;
 
 use App\Entity\Flavour;
-use App\Entity\Order;
 use App\Entity\Product;
 use App\Entity\Quantity;
-use phpDocumentor\Reflection\Types\Nullable;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
