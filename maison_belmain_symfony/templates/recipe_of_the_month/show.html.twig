@@ -26,9 +26,9 @@
         </tbody>
     </table>
 
-    <a href="{{ path('app_recipe_of_the_month_index') }}">back to list</a>
+    <a href="{{ path('app_recipe_of_the_month_index') }}" class="btn btn-success">back to list</a>
 
-    <a href="{{ path('app_recipe_of_the_month_edit', {'id': recipe_of_the_month.id}) }}">edit</a>
+    <a href="{{ path('app_recipe_of_the_month_edit', {'id': recipe_of_the_month.id}) }}" class="btn btn-info">edit</a>
 
     {{ include('recipe_of_the_month/_delete_form.html.twig') }}
 {% endblock %}

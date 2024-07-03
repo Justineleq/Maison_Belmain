@@ -22,9 +22,6 @@ class Product
     #[ORM\Column(type: Types::TEXT)]
     private ?string $description = null;
 
-    #[ORM\Column]
-    private ?int $price = null;
-
     /**
      * @var Collection<int, Order>
      */
@@ -36,6 +33,12 @@ class Product
 
     #[ORM\ManyToOne(inversedBy: 'Product')]
     private ?Quantity $quantity = null;
+
+    #[ORM\ManyToOne]
+    private ?ProductPrice $price = null;
+
+    #[ORM\Column(type: Types::DECIMAL, scale: 2)]
+    private ?float $finalPrice = null;
 
     public function __construct()
     {
@@ -67,18 +70,6 @@ class Product
     public function setDescription(string $description): static
     {
         $this->description = $description;
-
-        return $this;
-    }
-
-    public function getPrice(): ?int
-    {
-        return $this->price;
-    }
-
-    public function setPrice(int $price): static
-    {
-        $this->price = $price;
 
         return $this;
     }
@@ -130,6 +121,30 @@ class Product
     public function setQuantity(?Quantity $quantity): static
     {
         $this->quantity = $quantity;
+
+        return $this;
+    }
+
+    public function getPrice(): ?ProductPrice
+    {
+        return $this->price;
+    }
+
+    public function setPrice(?ProductPrice $price): static
+    {
+        $this->price = $price;
+
+        return $this;
+    }
+
+    public function getFinalPrice(): ?float
+    {
+        return $this->finalPrice;
+    }
+
+    public function setFinalPrice(float $finalPrice): static
+    {
+        $this->finalPrice = $finalPrice;
 
         return $this;
     }

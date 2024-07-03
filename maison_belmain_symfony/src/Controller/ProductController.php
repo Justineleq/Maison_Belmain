@@ -5,6 +5,7 @@ namespace App\Controller;
 use App\Entity\Product;
 use App\Form\ProductType;
 use App\Repository\ProductRepository;
+use App\Service\PricingService;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
@@ -14,6 +15,11 @@ use Symfony\Component\Routing\Attribute\Route;
 #[Route('/product', name: 'app_product_')]
 class ProductController extends AbstractController
 {
+
+    private $entityManager;
+    private $pricingService;
+
+
     #[Route('s', name: 'index', methods: ['GET'])]
     public function index(ProductRepository $productRepository): Response
     {
@@ -23,15 +29,30 @@ class ProductController extends AbstractController
     }
 
     #[Route('/new', name: 'new', methods: ['GET', 'POST'])]
-    public function new(Request $request, EntityManagerInterface $entityManager): Response
+    public function new(Request $request, EntityManagerInterface $entityManager, PricingService $pricingService): Response
     {
+        $this->entityManager = $entityManager;
+        $this->pricingService = $pricingService;
+
         $product = new Product();
         $form = $this->createForm(ProductType::class, $product);
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
+            $quantity = $product->getQuantity();
+            $basePrice = $product->getPrice();
+
+            // Calculate the final price
+            $finalPrice = $this->pricingService->calculatePrice($quantity, $basePrice);
+
+            $product->setFinalPrice($finalPrice);
+
             $entityManager->persist($product);
             $entityManager->flush();
+
+            $this->addFlash(
+                'notice',
+                'Your changes were saved!');
 
             return $this->redirectToRoute('app_product_index', [], Response::HTTP_SEE_OTHER);
         }
@@ -77,5 +98,33 @@ class ProductController extends AbstractController
         }
 
         return $this->redirectToRoute('app_product_index', [], Response::HTTP_SEE_OTHER);
+    }
+
+    public function __construct(EntityManagerInterface $entityManager, PricingService $pricingService)
+    {
+        $this->entityManager = $entityManager;
+        $this->pricingService = $pricingService;
+    }
+     /**
+     * @Route("/order/create", name="create_order")
+     */
+       /**
+     * @Route("/product/update", name="update_product")
+     */
+    public function updateProduct(Request $request): Response
+    {
+        // Fetch product (this can be from the request or your business logic)
+        $product = $this->entityManager->getRepository(Product::class)->find($request->get('product_id'));
+        $quantity = $product->getQuantity();
+        $basePrice = $product->getPrice();
+
+        // Calculate the final price
+        $finalPrice = $this->pricingService->calculatePrice($quantity, $basePrice);
+
+        // Update the product with the final price
+        $product->setFinalPrice($finalPrice);
+        $this->entityManager->flush();
+
+        return new Response('Product updated with final price: ' . $finalPrice);
     }
 }
