@@ -1,0 +1,30 @@
+@import url('https://fonts.googleapis.com/css2?family=Benne&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Nanum+Gothic&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400..700&family=Nanum+Gothic&display=swap');
+
+.main-title {
+  font-family: "Benne", serif;
+  font-weight: 400;
+  font-style: normal;
+  word-spacing: 25px;
+  margin: revert;
+}
+
+main {
+  font-family: "Nanum Gothic", sans-serif;
+  font-weight: 400;
+  font-style: normal;
+}
+
+.herobanner-title {
+  font-family: "Dancing Script", cursive;
+  font-optical-sizing: auto;
+  font-weight: 400;
+  font-style: normal;
+}
+
+.home-paragraph {
+  text-align: center;
+  line-height: 3;
+  margin: 0 50px 0px 50px;
+}

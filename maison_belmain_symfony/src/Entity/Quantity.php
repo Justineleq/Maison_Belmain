@@ -6,6 +6,7 @@ use App\Repository\QuantityRepository;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Serializer\Annotation\Groups;
 
 #[ORM\Entity(repositoryClass: QuantityRepository::class)]
 class Quantity
@@ -15,6 +16,7 @@ class Quantity
     #[ORM\Column]
     private ?int $id = null;
 
+    #[Groups('api_product_index')]
     #[ORM\Column]
     private ?int $amount = null;
 

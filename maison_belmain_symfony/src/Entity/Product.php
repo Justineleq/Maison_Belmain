@@ -47,6 +47,10 @@ class Product
     #[ORM\Column(type: Types::DECIMAL, scale: 2)]
     private ?float $finalPrice = null;
 
+    #[Groups('api_product_index')]
+    #[ORM\ManyToOne(inversedBy: 'Product')]
+    private ?Category $category = null;
+
     public function __construct()
     {
         $this->orders = new ArrayCollection();
@@ -152,6 +156,18 @@ class Product
     public function setFinalPrice(float $finalPrice): static
     {
         $this->finalPrice = $finalPrice;
+
+        return $this;
+    }
+
+    public function getCategory(): ?Category
+    {
+        return $this->category;
+    }
+
+    public function setCategory(?Category $category): static
+    {
+        $this->category = $category;
 
         return $this;
     }

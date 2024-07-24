@@ -1,0 +1,18 @@
+.herobanner-container {
+    position: relative;
+    margin: 3% 0 3% 0;
+}
+
+.herobanner-image {
+    height: 30%;
+    width: 100%;
+}
+
+.herobanner-title {
+    position: absolute;
+    font-size: xx-large;
+    top: 90%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    color: white;
+}

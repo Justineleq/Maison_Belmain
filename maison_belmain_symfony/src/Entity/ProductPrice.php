@@ -4,6 +4,7 @@ namespace App\Entity;
 
 use App\Repository\ProductPriceRepository;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Serializer\Annotation\Groups;
 
 #[ORM\Entity(repositoryClass: ProductPriceRepository::class)]
 class ProductPrice
@@ -13,6 +14,7 @@ class ProductPrice
     #[ORM\Column]
     private ?int $id = null;
 
+    #[Groups('api_product_index')]
     #[ORM\Column]
     private ?float $amount = null;
 

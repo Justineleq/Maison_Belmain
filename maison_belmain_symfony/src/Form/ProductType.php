@@ -2,6 +2,7 @@
 
 namespace App\Form;
 
+use App\Entity\Category;
 use App\Entity\Flavour;
 use App\Entity\Product;
 use App\Entity\Quantity;
@@ -18,6 +19,12 @@ class ProductType extends AbstractType
             ->add('flavour', EntityType::class, [
                 'class' => Flavour::class,
                 'choice_label' => 'name',
+                'attr' => ['class' => 'form-control'],
+                'label_attr' => ['class' => 'form-label'],
+            ])
+            ->add('category', EntityType::class, [
+                'class' => Category::class,
+                'choice_label' => 'type',
                 'attr' => ['class' => 'form-control'],
                 'label_attr' => ['class' => 'form-label'],
             ])
