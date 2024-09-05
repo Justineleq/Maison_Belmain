@@ -1,4 +1,3 @@
-import { useState } from "react";
 import "./navMenu.css";
 
 import Link from "next/link"
@@ -7,49 +6,15 @@ export default function NavMenu() {
     
     const shoppingCartIcon = "/Icons/icons8-shopping-cart-48.png"
 
-        const [isOpen, setIsOpen] = useState(false);
+    return(
+        <div class="burger-icon">
+            <label class="burger" for="burger">
+             <input class="line" type="checkbox" id="burger" />
+            </label>
 
-        const dropdownMenu = () => {
-            setIsOpen(!isOpen);
-          };
-    
-        return(        
-        
-        <div className="nav-container" id="navbar-list">
-            <div class="hamburger" onClick={dropdownMenu}>
-                <input 
-                    className="checkbox" 
-                    type="checkbox" 
-                    checked={isOpen} 
-                    onChange={dropdownMenu} 
-                    aria-expanded={isOpen}
-                />
-                <svg fill="none" viewBox="0 0 50 50" height="50" width="50">
-                    <path
-                    class="lineTop line"
-                    stroke-linecap="round"
-                    stroke-width="2"         
-                    d="M6 11L44 11"
-                    ></path>
-                    <path
-                    stroke-linecap="round"
-                    stroke-width="2"
-                    d="M6 24H43"
-                    class="lineMid line"
-                    ></path>
-                    <path
-                    stroke-linecap="round"
-                    stroke-width="2"
-                    d="M6 37H43"
-                    class="lineBottom line"
-                    ></path>
-                </svg>
-                
+        <div className="nav-container" id="navbar-list" >
        
-         </div>
-
-       
-             <ul className={`navbar-list ${isOpen ? 'open' : ''}`}>
+            <ul className="navbar-nav d-flex justify-content-evenly align-items-center">
                 <li className="nav-item">
                     <Link className="nav-link fs-5" href="/">Home</Link>
                 </li>
@@ -82,7 +47,8 @@ export default function NavMenu() {
                     </Link>
                 </li>
             </ul>
-        <div id="black-line"></div>
+        
+        </div>
         </div>
     )
 }

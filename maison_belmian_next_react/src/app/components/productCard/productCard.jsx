@@ -1,7 +1,7 @@
 import { Card } from "react-bootstrap";
 
-export default function ProductCards(data) {
-    console.log(data, 'productCards');
+export default function ProductCard(data) {
+    console.log(data, 'productCard');
     return(
         <>
          {data.length && (

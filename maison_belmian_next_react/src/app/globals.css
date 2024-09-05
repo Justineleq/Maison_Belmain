@@ -16,15 +16,14 @@ main {
   font-style: normal;
 }
 
-.herobanner-title {
+.herobanner-text {
   font-family: "Dancing Script", cursive;
-  font-optical-sizing: auto;
+  font-size: 20px;
   font-weight: 400;
   font-style: normal;
 }
 
 .home-paragraph {
   text-align: center;
-  line-height: 3;
-  margin: 0 50px 0px 50px;
+  margin: 0 15px 0px 15px;
 }

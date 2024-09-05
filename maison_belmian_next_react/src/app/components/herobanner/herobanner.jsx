@@ -12,7 +12,7 @@ export default function HeroBanner() {
                 src={"http://localhost:8000/images/" + imageForHerobanner}
                 >
             </Image>
-            <div className="herobanner-title">A party without cake is just a get-together.</div>
+            <div className="herobanner-text">A party without cake is just a get-together.</div>
         </div>
     )
 }
