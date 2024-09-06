@@ -27,10 +27,7 @@ class UserType extends AbstractType
                 'multiple' => true,
                 'expanded' => true, // Use checkboxes, set to false for select box
             ])
-            ->add('password', null, [
-                'attr' => ['class' => 'form-control'],
-                'label_attr' => ['class' => 'form-label'],
-            ])
+         
             ->add('isVerified', CheckboxType::class, [
                 'label'    => 'Is Verified',
                 'required' => false,

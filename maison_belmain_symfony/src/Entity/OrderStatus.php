@@ -75,4 +75,9 @@ class OrderStatus
 
         return $this;
     }
+
+    public function __toString(): string
+    {
+        return $this->title; // Ensure this returns a string
+    }
 }

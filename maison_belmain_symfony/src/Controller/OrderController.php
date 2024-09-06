@@ -15,8 +15,6 @@ use Symfony\Component\Security\Http\Attribute\IsGranted;
 #[Route('/order', name: 'app_order_')]
 class OrderController extends AbstractController
 {
-
-
     #[IsGranted('ROLE_ADMIN')]
     #[Route('s', name: 'index', methods: ['GET'])]
     public function index(OrderRepository $orderRepository): Response
@@ -26,26 +24,26 @@ class OrderController extends AbstractController
         ]);
     }
 
-    // #[IsGranted('ROLE_ADMIN')]
-    // #[Route('/new', name: 'new', methods: ['GET', 'POST'])]
-    // public function new(Request $request, EntityManagerInterface $entityManager): Response
-    // {
-    //     $order = new Order();
-    //     $form = $this->createForm(OrderType::class, $order);
-    //     $form->handleRequest($request);
+    #[IsGranted('ROLE_ADMIN')]
+    #[Route('/new', name: 'new', methods: ['GET', 'POST'])]
+    public function new(Request $request, EntityManagerInterface $entityManager): Response
+    {
+        $order = new Order();
+        $form = $this->createForm(OrderType::class, $order);
+        $form->handleRequest($request);
 
-    //     if ($form->isSubmitted() && $form->isValid()) {
-    //         $entityManager->persist($order);
-    //         $entityManager->flush();
+        if ($form->isSubmitted() && $form->isValid()) {
+            $entityManager->persist($order);
+            $entityManager->flush();
 
-    //         return $this->redirectToRoute('app_order_index', [], Response::HTTP_SEE_OTHER);
-    //     }
+            return $this->redirectToRoute('app_order_index', [], Response::HTTP_SEE_OTHER);
+        }
 
-    //     return $this->render('order/new.html.twig', [
-    //         'order' => $order,
-    //         'form' => $form,
-    //     ]);
-    // }
+        return $this->render('order/new.html.twig', [
+            'order' => $order,
+            'form' => $form,
+        ]);
+    }
     
     #[IsGranted('ROLE_ADMIN')]
     #[Route('/{id}', name: 'show', methods: ['GET'])]

@@ -1,6 +1,6 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}RecipeOfTheMonth index{% endblock %}
+{% block title %}Recipe Of The Month index{% endblock %}
 
 {% block body %}
     <h1>RecipeOfTheMonth index</h1>
@@ -12,6 +12,7 @@
                 <th>Title</th>
                 <th>Image</th>
                 <th>Description</th>
+                <th>Selected</th>
                 <th>actions</th>
             </tr>
         </thead>
@@ -22,6 +23,13 @@
                 <td>{{ recipe_of_the_month.title }}</td>
                 <td>{{ recipe_of_the_month.image }}</td>
                 <td>{{ recipe_of_the_month.description }}</td>
+                <td>
+                    {% if recipe_of_the_month.selected %}
+                        <span>Yes</span> {# or display an icon, e.g., checkmark #}
+                    {% else %}
+                        <span>No</span>
+                    {% endif %}
+                </td>
                 <td>
                     <a href="{{ path('app_recipe_of_the_month_show', {'id': recipe_of_the_month.id}) }}" class="btn btn-info">show</a>
                     <a href="{{ path('app_recipe_of_the_month_edit', {'id': recipe_of_the_month.id}) }}" class="btn btn-warning">edit</a>

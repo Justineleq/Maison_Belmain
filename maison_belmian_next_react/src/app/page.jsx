@@ -60,7 +60,8 @@ export default function Home() {
 
         {loading && !error && <div>Trying to find pictures!</div>}
         {!loading && !error && data && <CarouselHome data={data} />}
-        {!loading && error && <div>I can't find all the yummy pictures...</div>}
+        {!loading && error && <div>I can't find all the yummy pictures...</div>} 
+
 
         <AboutMe/>
 

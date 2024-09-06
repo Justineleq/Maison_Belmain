@@ -23,6 +23,9 @@ class RecipeOfTheMonth
     #[ORM\Column(type: Types::TEXT)]
     private ?string $description = null;
 
+    #[ORM\Column]
+    private ?bool $selected = null;
+
     #[ORM\ManyToOne(inversedBy: 'RecipeOfTheMonth')]
     private ?User $user = null;
 
@@ -65,6 +68,18 @@ class RecipeOfTheMonth
         $this->description = $description;
 
         return $this;
+    }    
+    
+    public function isSelected(): ?bool
+    {
+        return $this->selected;
+    }
+
+    public function setSelected(bool $selected): static
+    {
+        $this->selected = $selected;
+
+        return $this;
     }
 
     public function getUser(): ?User
@@ -78,4 +93,5 @@ class RecipeOfTheMonth
 
         return $this;
     }
+
 }

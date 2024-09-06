@@ -1,6 +1,6 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}RecipeOfTheMonth{% endblock %}
+{% block title %}Recipe Of The Month{% endblock %}
 
 {% block body %}
     <h1>RecipeOfTheMonth</h1>
@@ -22,6 +22,14 @@
             <tr>
                 <th>Description</th>
                 <td>{{ recipe_of_the_month.description }}</td>
+            </tr>
+            <tr>
+                <th>Selected</th>
+                    {% if recipe_of_the_month.selected %}
+                        <span>Yes</span> {# or display an icon, e.g., checkmark #}
+                    {% else %}
+                        <span>No</span>
+                    {% endif %}
             </tr>
         </tbody>
     </table>
