@@ -2,7 +2,8 @@
 
 import Carousel from 'react-bootstrap/Carousel';
 
-export default function CarouselHome(data) {
+export default function CarouselHome(data) 
+{
   console.log(data, 'carouselHome');
 
   return (

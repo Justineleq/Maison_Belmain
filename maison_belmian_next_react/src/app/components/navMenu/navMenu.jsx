@@ -3,7 +3,8 @@ import "./navMenu.css";
 
 import Link from "next/link"
 
-export default function NavMenu() {
+export default function NavMenu() 
+{
 
     const [menuOpen, setMenuOpen] = useState(false); 
 
@@ -31,7 +32,7 @@ export default function NavMenu() {
                     <Link className="nav-link fs-5" href="/">Home</Link>
                 </li>
                 <li className="nav-item">
-                    <Link className="nav-link fs-5" href="/products/bespoke">Bespoke cakes</Link>
+                    <Link className="nav-link fs-5" href="/products/bespoke">Bespoke</Link>
                 </li>
                 <li className="nav-item">
                     <Link className="nav-link fs-5" href="/products/brownie">Brownies</Link>
@@ -43,10 +44,10 @@ export default function NavMenu() {
                     <Link className="nav-link fs-5" href="/products/cupcake">Cupcakes</Link>
                 </li>
                 <li className="nav-item">
-                    <Link className="nav-link fs-5" href="/">Recipe of the month</Link>
+                    <Link className="nav-link fs-5" href="/recipeOfTheMonth">Recipe of the month</Link>
                 </li>
                 <li className="nav-item">
-                    <Link className="nav-link fs-5" href="/">Contact</Link>
+                    <Link className="nav-link fs-5" href="/contact">Contact</Link>
                 </li>
                 <li className="nav-item" id="shopping-cart">
                     <Link className="nav-link fs-5" href="/">

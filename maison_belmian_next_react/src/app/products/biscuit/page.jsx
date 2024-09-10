@@ -1,10 +1,14 @@
 "use client";
 
-import Navbar from "@/app/components/navbar/navbar";
+import Footer from "@/app/components/Includes/footer/footer";
+import Navbar from "@/app/components/Includes/navbar/navbar";
 import ProductCard from "@/app/components/productCard/productCard";
+import Image from "next/image";
 import { useEffect, useState } from "react";
 
-export default function BiscuitPage(){
+
+export default function BiscuitPage()
+{
 
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState(false);
@@ -32,14 +36,45 @@ export default function BiscuitPage(){
 
     console.log(data, 'biscuit page');
     
+    const isBiscuit = data ? data.filter(product => product.category.type === 'Biscuit') : [];
+    console.log(isBiscuit, 'is biscuit');
 
     return(
+      <>        
         <main>
-            <Navbar/>
-            {data && data.map((product, index) => (
-                <ProductCard key={index} product={product} />
-            ))}
+              <Navbar/>
 
-        </main>
+              <div style={{ display: "flex", justifyContent: "center"}}>
+                <h2 className="title-product-page"
+                  style={{
+                    position: 'absolute',
+                    color: 'white',
+                    textDecoration: 'underline',
+                    textUnderlineOffset: '4px',
+                    zIndex: '1'
+                }}>Biscuits</h2>
+                  <Image className="image-title-product-page"
+                  style={{ 
+                    position: 'relative',
+                    display: 'flex', 
+                    borderRadius: '10px',
+
+                  }}
+                    src='/images/products/sj-YDvfndOs4IQ-unsplash.jpg'
+                    alt= 'yummy biscuit image'
+                    width={200}
+                    height={80}
+                  />
+          </div>
+
+              {isBiscuit && isBiscuit.map((product, index) => (
+                  <ProductCard key={index} product={product} />
+              ))}
+
+      </main>
+
+            <Footer/>
+    </>
+
     );
 }

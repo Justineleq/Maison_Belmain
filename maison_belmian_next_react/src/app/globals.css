@@ -27,3 +27,13 @@ main {
   text-align: center;
   margin: 0 15px 0px 15px;
 }
+
+/* Product Card */
+
+#title-product-page {
+  position: 'absolute';
+  color: 'white';
+  text-decoration: 'underline';
+  z-index: '1'
+}
+

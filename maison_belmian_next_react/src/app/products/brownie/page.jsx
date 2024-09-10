@@ -1,10 +1,13 @@
 "use client";
 
-import Navbar from "@/app/components/navbar/navbar";
+import Footer from "@/app/components/Includes/footer/footer";
+import Navbar from "@/app/components/Includes/navbar/navbar";
 import ProductCard from "@/app/components/productCard/productCard";
+import Image from "next/image";
 import { useEffect, useState } from "react";
 
-export default function BrowniePage(){
+export default function BrowniePage()
+{
 
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState(false);
@@ -30,14 +33,48 @@ export default function BrowniePage(){
         });
     }, []);
 
+    console.log(data, 'brownie page');
+
+    const isBrownie = data ? data.filter(product => product.category.type === 'Brownie') : [];
+    console.log(isBrownie, 'is Brownie');
+    
+
     return(
+      <>
         <main>
             <Navbar/>
 
-            <ProductCard product={data}/>
-            {/* <ProductCard product={data}/>
-            <ProductCard product={data}/>
-            <ProductCard product={data}/> */}
+            <div style={{ display: "flex", justifyContent: "center"}}>
+              <h2 className="title-product-page"
+                style={{
+                  position: 'absolute',
+                  color: 'white',
+                  textDecoration: 'underline',
+                  textUnderlineOffset: '4px',
+                  zIndex: '1'
+              }}>Brownie</h2>
+                <Image className="image-title-product-page"
+                style={{ 
+                  position: 'relative',
+                  display: 'flex', 
+                  borderRadius: '10px',
+
+                }}
+                  src='/images/products/honey-yanibel-minaya-cruz-fPWxYxfBVYM-unsplash.jpg'
+                  alt= 'yummy brownie image'
+                  width={200}
+                  height={80}
+                />
+        </div>
+
+            {isBrownie && isBrownie.map((product, index) => (
+                <ProductCard key={index} product={product} />
+
+
+            ))}
+
         </main>
+        <Footer/>
+    </>
     );
 }

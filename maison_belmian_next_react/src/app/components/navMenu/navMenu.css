@@ -17,7 +17,7 @@
       user-select: none;
       cursor: pointer;
       transition: 300ms;
-      border-radius: 10px;
+      border-radius: 50px;
       background-color: #FEF0EE;
     }
     .burger input[type="checkbox"] {

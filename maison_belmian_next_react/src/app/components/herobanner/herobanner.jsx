@@ -1,7 +1,8 @@
 import { Image } from "react-bootstrap";
 import "./herobanner.css"
 
-export default function HeroBanner() {
+export default function HeroBanner() 
+{
 
     const imageForHerobanner = "Herobanner/chocolate-banner.jpg";
 

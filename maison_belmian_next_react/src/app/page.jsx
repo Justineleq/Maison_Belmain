@@ -1,14 +1,11 @@
 "use client";
 
-import "./globals.css";
-import 'bootstrap/dist/css/bootstrap.min.css';
 import { useEffect, useState } from "react";
 import CarouselHome from "./components/carouselHome/carouselHome";
-import Navbar from "./components/navbar/navbar";
+import Navbar from "./components/Includes/navbar/navbar";
 import HeroBanner from "./components/herobanner/herobanner";
-import NavMenu from "./components/navMenu/navMenu";
 import AboutMe from "./components/aboutMe/aboutMe";
-import Footer from "./components/footer/footer";
+import Footer from "./components/Includes/footer/footer";
 
 export default function Home() {
   const [loading, setLoading] = useState(true);
@@ -41,8 +38,6 @@ export default function Home() {
       <main>
 
         <Navbar />
-
-        <NavMenu />
 
         <HeroBanner/>
           <div className="home-paragraph">
