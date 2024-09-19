@@ -16,7 +16,8 @@ export default function AboutMe()
             />
 
             <p className="about-me-paragraph">
-            Welcome to our bakery, where every moment is made memorable with our delicious creations. We specialize in a variety of treats, including biscuits, brownies, and beautifully decorated cupcakes, all crafted with the utmost care. For special occasions, our bespoke cakes are designed to perfectly complement your celebrations, whether it's a birthday, wedding, or any other event. Let us bring a touch of delight to your gatherings with our wide range of delectable confections.
+            Joanne Todd Belmain is an extremely accomplished chef, with 24 years' experience in luxury hotels, Michelin-starred restaurants and artisan bakeries. Her impressive career includes preparing meals for Nobel Peace Prize banquets, music award ceremonies, celebrities and royalty. She honed her craft in prestigious kitchens, working alongside culinary legends such as Marcus Wareing and Gordon Ramsay in London, and Eyvind Hellstrøm in Norway. Her career also includes heading up culinary operations at Brown's Hotel, London's oldest hotel. Joanne's expertise extends to large-scale bespoke events, private functions and luxury weddings, where she has designed award-winning afternoon teas. She was head judge of the UK Afternoon Tea Awards, being part of the inaugural team in 2016, and was also a tasting judge for Cacao Barry's World Chocolate Masters. With a BTM in pastry, confectionery, ice cream and catering, as well as advanced qualifications in food safety and health and safety, Joanne ensures her creations are not only delicious but also meet the highest standards. Since 2020, she has broadened her expertise in the French pastry arts, bringing her wealth of experience to Maison Belmain, where she creates bespoke products tailored to the needs of her customers, offering unforgettable culinary experiences.
+
             </p>
         
         

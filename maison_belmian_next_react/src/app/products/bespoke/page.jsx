@@ -22,6 +22,7 @@ export default function BespokePage()
                     Welcome to our bakery, where every moment is made memorable with our delicious creations. We specialize in a variety of treats, including biscuits, brownies, and beautifully decorated cupcakes, all crafted with the utmost care. For special occasions, our bespoke cakes are designed to perfectly complement your celebrations, whether it's a birthday, wedding, or any other event. Let us bring a touch of delight to your gatherings with our wide range of delectable confections.
                 </p>
                 <Button style={{
+                        margin: 10,
                         backgroundColor: '#7FCCD8', 
                         border: '#7FCCD8'}}>Contact us!</Button>
             </div>

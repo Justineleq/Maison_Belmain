@@ -14,6 +14,7 @@ export default function BiscuitPage()
     const [error, setError] = useState(false);
     const [data, setData] = useState(null);
     // const [carouselImages, setCarouselImages] = useState();
+
   
     useEffect(() => {
       fetch('http://127.0.0.1:8000/api/products')

@@ -1,10 +1,21 @@
 "use client";
 
+import { useState } from "react";
 import { Button, Card } from "react-bootstrap";
 
 export default function ProductCard(props) 
 {  
     const { product } = props;
+
+    const [addProduct, setAddProduct] = useState([])
+
+    function addProductToCart() 
+    {
+        setAddProduct([...addProduct, product]);
+
+        console.log(addProduct);
+        
+    }
 
     return(
         <div 
@@ -27,7 +38,17 @@ export default function ProductCard(props)
                                 fontWeight: 'bold' }}
                                 >{product.flavour.name}</Card.Title>
                         <Card.Text>{product.description}</Card.Text>
-                        <Button 
+                        {/* <Card.Text>{product.price.amount}</Card.Text> */}
+                        {/* <Card.Text>{product.quantity}</Card.Text> */}
+                        {/* <select style={{
+                            margin: '15px'
+                        }}>
+                            <option value="" default>Quantity</option>
+                            <option value="">6</option>
+                            <option value="">12</option>
+                            <option value="">24</option>
+                        </select> */}
+                        <Button onClick={addProductToCart}
                             style={{ 
                                 backgroundColor: '#7FCCD8', 
                                 border: '#7FCCD8'}} 
