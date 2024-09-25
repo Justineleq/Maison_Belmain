@@ -11,15 +11,15 @@ export default function NavMenu()
     const shoppingCartIcon = "/Icons/icons8-shopping-cart-48.png";
 
     const handleToggleMenu = () => {
-        setMenuOpen(!menuOpen);
+        setMenuOpen(prev => !prev);
     };
 
     return (
         <div className=""
             style={{ 
                 display: "flex",
-                justifyContent: "space-between",
                 alignItems: "stretch",
+                justifyContent: "space-around",
                 margin: 5,
 
         }}>
@@ -33,9 +33,10 @@ export default function NavMenu()
                     />
                 </label>
 
-            <div className="nav-container" id="navbar-list" style={{ display: menuOpen ? 'block' : 'none'}}>
-        
-                <ul className="navbar-nav d-flex justify-content-evenly align-items-center">
+{/* Maybe take out this div- wanted to use it to display-none the list and not have the div take up the place */}
+        <div className="nav-container">
+            <div id="navbar-list">        
+                <ul className={`${!menuOpen && "customVisibility"}`} style={{listStyle:"none"}}>
                     <li className="nav-item">
                         <Link className="nav-link fs-5" href="/">Home</Link>
                     </li>
@@ -57,15 +58,12 @@ export default function NavMenu()
                     <li className="nav-item">
                         <Link className="nav-link fs-5" href="/contact">Contact</Link>
                     </li>
-                    <li className="nav-item" id="shopping-cart">
-
-                    </li>
                 </ul>
-            
             </div>
+        </div>
             </div>
             <div>
-                 <Link className="nav-link fs-5" href="/">
+                 <Link className="nav-link fs-5" href="/shoppingCart">
                     <img 
                         src={"http://localhost:8000/images/" + shoppingCartIcon} 
                         alt="shopping cart icon"

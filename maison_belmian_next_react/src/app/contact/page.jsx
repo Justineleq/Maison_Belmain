@@ -6,7 +6,15 @@ import { Button, Image } from "react-bootstrap";
 import Navbar from "../components/Includes/navbar/navbar";
 import Footer from "../components/Includes/footer/footer";
 
-export default function ContactPage() {
+export default function ContactPage(props) {
+
+    console.log(props, 'props from contact');
+   async function handleContactForm(event)
+   {
+    event.preventDefault()
+    console.log(event, 'click contact');
+    
+   }  
 
     return (
         <>
@@ -22,7 +30,8 @@ export default function ContactPage() {
                     height: '115vh' 
                 }}>
                 
-                    <form style={{
+                    <form onSubmit={handleContactForm}
+                    style={{
                         backgroundColor: "white",
                         width: '70%', 
                         height: 'fit-content',
@@ -45,7 +54,7 @@ export default function ContactPage() {
 
                         <label htmlFor="formGroupExampleInput" className="form-label">Subject :</label>
                         <select className="form-select mb-4" aria-label="Default select example">
-                            <option selected>Select your subject</option>
+                            <option defaultValue>Select your subject</option>
                             <option value="1">Biscuits</option>
                             <option value="2">Cupcakes</option>
                             <option value="3">Brownies</option>

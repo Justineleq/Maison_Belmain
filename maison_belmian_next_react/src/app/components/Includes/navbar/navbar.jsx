@@ -8,7 +8,7 @@ export default function Navbar()
 
   return (
     <>
-        <nav className="navbar navbar-expand-lg d-flex flex-column ">
+        <nav className="navbar navbar-expand-lg d-flex flex-column" id="top-navbar">
             <div className="d-flex justify-content-center align-items-center flex-column" id="header-top">
                     
                 <div className="navbar-nav d-flex " id="header-logo">

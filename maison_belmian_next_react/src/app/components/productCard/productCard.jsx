@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { Button, Card } from "react-bootstrap";
 
 export default function ProductCard(props) 
@@ -13,9 +13,13 @@ export default function ProductCard(props)
     {
         setAddProduct([...addProduct, product]);
 
-        console.log(addProduct);
-        
+        // console.log(addProduct);   
     }
+
+        // Use useEffect to log the updated product list whenever it changes
+        useEffect(() => {
+            console.log(addProduct);
+        }, [addProduct]);
 
     return(
         <div 
@@ -38,16 +42,8 @@ export default function ProductCard(props)
                                 fontWeight: 'bold' }}
                                 >{product.flavour.name}</Card.Title>
                         <Card.Text>{product.description}</Card.Text>
-                        {/* <Card.Text>{product.price.amount}</Card.Text> */}
-                        {/* <Card.Text>{product.quantity}</Card.Text> */}
-                        {/* <select style={{
-                            margin: '15px'
-                        }}>
-                            <option value="" default>Quantity</option>
-                            <option value="">6</option>
-                            <option value="">12</option>
-                            <option value="">24</option>
-                        </select> */}
+                        <Card.Text>Price: {product.finalPrice}€</Card.Text>
+                        <Card.Text>Quantity: {product.quantity.amount}</Card.Text>
                         <Button onClick={addProductToCart}
                             style={{ 
                                 backgroundColor: '#7FCCD8', 

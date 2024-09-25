@@ -1,11 +1,13 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import CarouselHome from "./components/carouselHome/carouselHome";
+
 import Navbar from "./components/Includes/navbar/navbar";
 import HeroBanner from "./components/herobanner/herobanner";
 import AboutMe from "./components/aboutMe/aboutMe";
 import Footer from "./components/Includes/footer/footer";
+import CarousselHomePage from "./components/carousels/carouselHomePage";
+
 
 export default function Home() {
   const [loading, setLoading] = useState(true);
@@ -53,10 +55,10 @@ export default function Home() {
             </p>
           </div>
 
-        {loading && !error && <div>Trying to find pictures!</div>}
-        {!loading && !error && data && <CarouselHome data={data} />}
-        {!loading && error && <div>I can't find all the yummy pictures...</div>} 
-
+        
+          {loading && !error && <div>Trying to find pictures!</div>}
+          {!loading && !error && data && <CarousselHomePage />}
+          {!loading && error && <div>I can't find all the yummy pictures...</div>} 
 
         <AboutMe/>
 
