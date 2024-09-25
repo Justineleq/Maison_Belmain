@@ -2,11 +2,11 @@
 
 namespace App\Entity;
 
-use App\Repository\reviewRepository;
+use App\Repository\ReviewRepository;
 use Doctrine\ORM\Mapping as ORM;
 
 #[ORM\Entity(repositoryClass: ReviewRepository::class)]
-class review
+class Review
 {
     #[ORM\Id]
     #[ORM\GeneratedValue]

@@ -24,12 +24,10 @@
                 <td>{{ recipe_of_the_month.image }}</td>
                 <td>{{ recipe_of_the_month.description }}</td>
                 <td>
-                    {% if recipe_of_the_month.selected %}
-                        <span>Yes</span> {# or display an icon, e.g., checkmark #}
-                    {% else %}
-                        <span>No</span>
-                    {% endif %}
+                    <input type="checkbox" class="rotm-checkbox" />
                 </td>
+
+
                 <td>
                     <a href="{{ path('app_recipe_of_the_month_show', {'id': recipe_of_the_month.id}) }}" class="btn btn-info">show</a>
                     <a href="{{ path('app_recipe_of_the_month_edit', {'id': recipe_of_the_month.id}) }}" class="btn btn-warning">edit</a>
@@ -44,4 +42,22 @@
     </table>
 
     <a href="{{ path('app_recipe_of_the_month_new') }}" class="btn btn-success">Create new</a>
+ 
+ <script>
+        
+        const checkboxes = document.querySelectorAll('.rotm-checkbox');
+
+        checkboxes.forEach((checkbox) => {
+            checkbox.addEventListener('change', function() {
+                if (this.checked) {
+                    checkboxes.forEach((otherCheckbox) => {
+                        if (otherCheckbox !== this) {
+                            otherCheckbox.checked = false;
+                        }
+                    });
+                }
+            });
+        });
+    </script>
+
 {% endblock %}

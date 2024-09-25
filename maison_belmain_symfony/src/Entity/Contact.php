@@ -26,10 +26,6 @@ class Contact
     #[ORM\Column(type: Types::TEXT)]
     private ?string $message = null;
 
-    #[ORM\ManyToOne(inversedBy: 'contacts')]
-    #[ORM\JoinColumn(nullable: false)]
-    private ?ContactStatus $contactStatus = null;
-
     public function getId(): ?int
     {
         return $this->id;
@@ -83,15 +79,4 @@ class Contact
         return $this;
     }
 
-    public function getContactStatus(): ?ContactStatus
-    {
-        return $this->contactStatus;
-    }
-
-    public function setContactStatus(?ContactStatus $contactStatus): static
-    {
-        $this->contactStatus = $contactStatus;
-
-        return $this;
-    }
 }

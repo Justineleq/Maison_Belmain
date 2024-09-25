@@ -12,10 +12,11 @@ use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Attribute\Route;
 use Symfony\Component\Security\Http\Attribute\IsGranted;
 
+#[IsGranted('ROLE_ADMIN')]
 #[Route('/user', name: 'app_user_')]
 class UserController extends AbstractController
 {
-    
+    #[IsGranted('ROLE_ADMIN')]
     #[Route('s', name: 'index', methods: ['GET'])]
     public function index(UserRepository $userRepository): Response
     {

@@ -26,10 +26,6 @@ class RecipeOfTheMonthType extends AbstractType
                 'attr' => ['class' => 'form-control'],
                 'label_attr' => ['class' => 'form-label'],
             ])
-            ->add('selected', null, [
-                'required' => false, 
-                'label' => 'Select Item',
-            ])
             ->add('user', EntityType::class, [
                 'class' => User::class,
                 'choice_label' => 'id',

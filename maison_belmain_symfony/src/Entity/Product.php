@@ -44,7 +44,7 @@ class Product
     private ?ProductPrice $price = null;
 
     #[Groups('api_product_index')]
-    #[ORM\Column(type: Types::DECIMAL, scale: 2)]
+    #[ORM\Column(type: Types::DECIMAL, scale: 4)]
     private ?float $finalPrice = null;
 
     #[Groups('api_product_index')]
