@@ -1,78 +1,70 @@
 "use client";
 
+import './style.css';
 import Footer from "@/app/components/Includes/footer/footer";
 import Navbar from "@/app/components/Includes/navbar/navbar";
 import ProductCard from "@/app/components/productCard/productCard";
 import Image from "next/image";
 import { useEffect, useState } from "react";
 
-export default function BrowniePage()
-{
+export default function BrowniePage() {
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(false);
+  const [data, setData] = useState(null);
 
-    const [loading, setLoading] = useState(true);
-    const [error, setError] = useState(false);
-    const [data, setData] = useState(null);
-    // const [carouselImages, setCarouselImages] = useState();
-  
-    useEffect(() => {
-      fetch('http://127.0.0.1:8000/api/products')
-        .then((response) => {
-          if (!response.ok) {
-            throw new Error('Network response was not ok');
-          }
-          return response.json();
-        })
-        .then((data) => {
-          setLoading(false);
-          setData(data);
-        })
-        .catch((error) => {
-          console.error('Error fetching data:', error);
-          setError(true);
-          setLoading(false);
-        });
-    }, []);
+  useEffect(() => {
+    fetch("http://127.0.0.1:8000/api/products")
+      .then((response) => {
+        if (!response.ok) {
+          throw new Error("Network response was not ok");
+        }
+        return response.json();
+      })
+      .then((data) => {
+        setLoading(false);
 
-    console.log(data, 'brownie page');
+        // Trie le tableau de produit(s) pour identifier les produits avec la catégorie "Brownie".
+        const onlyBrownieProducts = data.filter(
+          (product) => product.category.type === "Brownie"
+        );
 
-    const isBrownie = data ? data.filter(product => product.category.type === 'Brownie') : [];
-    console.log(isBrownie, 'is Brownie');
-    
+        // Enregistre le tableau de produit(s) brownie(s) dans la variable d'état "data".
+        setData(onlyBrownieProducts ? onlyBrownieProducts : []);
+      })
+      .catch((error) => {
+        console.error("Error fetching data:", error);
+        setError(true);
+        setLoading(false);
+      });
+  }, []);
+
+  console.group("Debug page brownie");
+  console.log("Données récupérées : ");
+  console.log(data ? data : "Aucune données récupérées");
+  console.groupEnd();
 
     return(
       <>
         <main>
             <Navbar/>
 
-            <div style={{ display: "flex", justifyContent: "center"}}>
-              <h2 className="title-product-page"
-                style={{
-                  position: 'absolute',
-                  color: 'white',
-                  textDecoration: 'underline',
-                  textUnderlineOffset: '4px',
-                  zIndex: '1'
-              }}>Brownie</h2>
+            <div className="product-container">
+              <h2 className="title-product-page">Brownie</h2>
                 <Image className="image-title-product-page"
-                style={{ 
-                  position: 'relative',
-                  display: 'flex', 
-                  borderRadius: '10px',
-
-                }}
                   src='/images/products/honey-yanibel-minaya-cruz-fPWxYxfBVYM-unsplash.jpg'
                   alt= 'yummy brownie image'
                   width={200}
                   height={80}
                 />
         </div>
-
-            {isBrownie && isBrownie.map((product, index) => (
-                <ProductCard key={index} product={product} />
-
-
+ {/* Si le fetch et le trie des produits c'est bien passé, j'affiche la liste de produits. */}
+            {data && data.map((product, index) => (
+              <ProductCard key={index} product={product} />
             ))}
-
+          {/* Si le fetch est en cours de chargement, j'affige un message informatif pour l'utilisateur */}
+          {!data && !error && loading && <p>Loading, please wait</p>}
+          {/* Si le fetch a rencontré une erreur, j'afficge un message informatif pour l'utilisateur */}
+          {!data && error && !loading && <p>An error occured, we're sorry ...</p>}
         </main>
         <Footer/>
     </>

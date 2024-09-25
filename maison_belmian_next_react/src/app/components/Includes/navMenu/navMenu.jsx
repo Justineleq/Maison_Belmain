@@ -15,14 +15,7 @@ export default function NavMenu()
     };
 
     return (
-        <div className=""
-            style={{ 
-                display: "flex",
-                alignItems: "stretch",
-                justifyContent: "space-around",
-                margin: 5,
-
-        }}>
+        <div className="navbar-menu">
             <div className="burger-icon">
                 <label className="burger" htmlFor="burger">
                     <input

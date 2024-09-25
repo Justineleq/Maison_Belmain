@@ -1,0 +1,18 @@
+.product-container{
+    display: flex;
+    justify-content: center;
+}
+
+.title-product-page{
+    position: absolute;
+    color: white;
+    text-decoration: underline;
+    text-underline-offset: 4px;
+    z-index: 1
+}
+
+.image-title-product-page{
+    position: relative;
+    display: flex;
+    border-radius: 10px;
+}

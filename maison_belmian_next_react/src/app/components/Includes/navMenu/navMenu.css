@@ -1,6 +1,13 @@
 .nav-container {
     position: relative;
   }
+
+  .navbar-menu {
+    display: flex;
+    align-items: stretch;
+    justify-content: space-around;
+    margin: 5px;
+  }
  
   @media only screen and (max-width:769px) {
 

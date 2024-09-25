@@ -1,9 +1,0 @@
-label {
-    display: flex;
-    justify-content: center;
-    font-weight: bold;
-}
-
-input, textarea, select {
-    background-color: #FEF0EE !important;
-}

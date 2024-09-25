@@ -11,36 +11,20 @@ export default function RecipeOfTheMonth()
         <>
             <main>
                 <Navbar/>
-            <div style={{ 
-                    backgroundColor: '#FEF0EE',
-                    height: '20vh',
-                    display: "flex",
-                    justifyContent: 'center',
-                    alignItems: 'center',
-
-                    }}>
-                <div style={{ 
-                    display: "flex", 
-                    alignItems: "center", 
-                    flexDirection: "column"}}>
-                        <h2 className="title-product-page"
-                            style={{
-                            textDecoration: 'underline',
-                            textUnderlineOffset: '4px',
-                        }}>Recipe of the month</h2>
+            <div className="rotm-container">
+                {/* change class name */}
+                <div className="rotm">
+                    <h2 className="title-product-page">Recipe of the month</h2>
                 </div>
             </div>
 
-            <div style={{ 
-                display: "flex", 
-                justifyContent: "center"}}>
+            <div className="bespoke-img">
                     <Image style={{ 
                         margin: 10,
                         borderRadius: '10px'}}
                         src='/images/products/Cupcakes-red-velvet.jpg'
                         height={200}
                         width={100}
-                        
                         >
                     </Image>
             </div>

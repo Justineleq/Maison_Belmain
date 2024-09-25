@@ -1,0 +1,21 @@
+.bespoke-page{
+    display: flex;
+    align-items: center;
+    flex-direction: column
+}
+
+.title-product-page {
+    text-decoration: underline;
+    text-underline-offset: '4px',
+}
+
+.bespoke-paragraph{
+    text-align: center;
+    margin: 0 15px 0px 15px
+}
+
+.bespoke-btn{
+    margin: 10;
+    background-color: #7FCCD8;
+    border: #7FCCD8
+}
