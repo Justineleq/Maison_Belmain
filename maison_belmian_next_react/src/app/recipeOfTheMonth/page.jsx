@@ -12,7 +12,6 @@ export default function RecipeOfTheMonth()
             <main>
                 <Navbar/>
             <div className="rotm-container">
-                {/* change class name */}
                 <div className="rotm">
                     <h2 className="title-product-page">Recipe of the month</h2>
                 </div>

@@ -1,33 +1,50 @@
 "use client"
 
-import { useState } from "react";
+import './style.css';
+import { CartContext } from "@/AppContext";
+import { useContext } from "react";
+import { Button } from "react-bootstrap";
 
-// import { addProductToCart } from '../productCard';
 
-export default function ShoppingCart(product) 
+
+export default function ShoppingCart() 
 {
+    const {cart, removeFromCart} = useContext(CartContext)
   
-console.log(product, 'shopping cart');
-
-
     return(
-      
-        <table className="table">
-            <thead>
-                <tr>
-                <th scope="col">Flavour</th>
-                <th scope="col">Quantity</th>
-                <th scope="col">Price</th>
-                </tr>
-            </thead>
-            <tbody>
+        <>
+            {cart.length === 0 ? (
+                <h3>Your cart is empty</h3>
+            ) : (
+                <table className="table">
+                
+                <thead>
                     <tr>
-                    <td>flavour</td>
-                    <td>amount</td>
-                    <td>price</td>
+                    <th scope="col">Flavour</th>
+                    <th scope="col">Category</th>
+                    <th scope="col">Quantity</th>
+                    <th scope="col">Price</th>
+                    <th scope="col"></th>
                     </tr>
-            </tbody>
-        </table>
+                </thead>
+                    {cart.map((product) => (
+                        <tbody>
+                            <tr key={product.id}>
+                                <td>{product.flavour.name}</td>
+                                <td>{product.category.type}</td>
+                                <td>{product.quantity.amount}</td>
+                                <td>{product.finalPrice}€</td>
+                                <td>
+                                <Button className="btn-shopping-cart"
+                                    onClick={() => removeFromCart(product.id)}>Remove</Button>
+                                </td>
+                            </tr>
+                        </tbody>
+                    ))}
+
+            </table>
+            )}
+        </>
 
     );
 }

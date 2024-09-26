@@ -51,7 +51,8 @@ export default function BrowniePage() {
             <div className="product-container">
               <h2 className="title-product-page">Brownie</h2>
                 <Image className="image-title-product-page"
-                  src='/images/products/honey-yanibel-minaya-cruz-fPWxYxfBVYM-unsplash.jpg'
+                  src='/images/products/chocolate-brownies.jpg'
+                  priority={true}
                   alt= 'yummy brownie image'
                   width={200}
                   height={80}

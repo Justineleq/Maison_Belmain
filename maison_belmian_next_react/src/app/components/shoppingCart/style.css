@@ -1,0 +1,9 @@
+.btn-shopping-cart {
+    background-color: #7FCCD8;
+    border: #7FCCD8;
+}
+
+h3 {
+    display: flex;
+    justify-content: center;
+}

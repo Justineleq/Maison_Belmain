@@ -118,7 +118,7 @@ export default function ContactPage(props) {
                 </div>
               {/* Display success or error messages */}
               {loading && <p>Sending message...</p>}
-                {success && <p>Email sent successfully!</p>}
+                {success && <p>Message sent successfully!</p>}
                 {error && <p>Something went wrong. Please try again.</p>}
                
             </main>
