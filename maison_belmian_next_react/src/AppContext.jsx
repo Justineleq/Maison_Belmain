@@ -1,30 +1,47 @@
-"use client"
+"use client";
 
-import { createContext, useState } from "react";
+import { createContext, useState, useEffect } from "react";
 
 export const CartContext = createContext();
 
-export const CartProvider = ({children}) =>
-{
-    const [cart, setCart] = useState([]);
+export const CartProvider = ({ children }) => {
+  // Vérifie la présence d'un panier dans le local storage et l'utilise s'il existe
+  const [cart, setCart] = useState(checkLocalStorageSavedCart);
 
-    //adds products to the cart
-    const addToCart = (product) => {
-        setCart((prevCart) => [...prevCart, product])
-    };
+  // Sauvegarde le panier dans le local storage lorsqu'il est modifié
+  useEffect(() => {
+    localStorage.setItem("userCart", JSON.stringify(cart));
+  }, [cart]);
 
-    //removes products from the cart
-    const removeFromCart = (productId) => {
-        setCart((prevCart) => prevCart.filter((item) => item.id !==productId))
-    };
+  // Adds products to the cart
+  const addToCart = (product) => {
+    setCart((prevCart) => {
+      const updatedCart = [...prevCart, product];
+      return updatedCart;
+    });
+  };
 
-    const value = {
-        cart,
-        addToCart,
-        removeFromCart,
-    }
+  // Removes products from the cart
+  const removeFromCart = (productId) => {
+    setCart((prevCart) => prevCart.filter((item) => item.id !== productId));
+  };
 
-    return <CartContext.Provider value={value}>{children}</CartContext.Provider>
+  // Clears the entire cart
+  const clearCart = () => {
+    setCart([]);
+  };
 
+  const value = {
+    cart,
+    addToCart,
+    removeFromCart,
+    clearCart,
+  };
+
+  return <CartContext.Provider value={value}>{children}</CartContext.Provider>;
 };
 
+const checkLocalStorageSavedCart = () => {
+  const savedCart = localStorage.getItem("userCart");
+  return savedCart ? JSON.parse(savedCart) : [];
+};

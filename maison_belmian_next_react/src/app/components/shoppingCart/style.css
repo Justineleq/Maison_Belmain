@@ -7,3 +7,10 @@ h3 {
     display: flex;
     justify-content: center;
 }
+
+.btn-make-order {
+    background-color: #7FCCD8;
+    border: #7FCCD8;
+    /* display: flex;
+    justify-content: center; */
+}

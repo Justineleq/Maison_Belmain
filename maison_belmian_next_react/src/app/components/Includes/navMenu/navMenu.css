@@ -1,117 +1,114 @@
 .nav-container {
-    position: relative;
+  position: relative;
+}
+
+.navbar-menu {
+  display: flex;
+  align-items: stretch;
+  justify-content: space-around;
+  margin: 5px;
+}
+
+@media only screen and (max-width: 769px) {
+  .customVisibility {
+    display: none;
+    visibility: hidden;
   }
 
-  .navbar-menu {
+  .burger-icon {
+    margin: 0.5rem;
+    width: 80%;
+  }
+
+  .burger {
+    width: 50px;
+    height: 50px;
     display: flex;
-    align-items: stretch;
-    justify-content: space-around;
-    margin: 5px;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    user-select: none;
+    cursor: pointer;
+    transition: 300ms;
+    border-radius: 50px;
+    background-color: #fef0ee;
   }
- 
-  @media only screen and (max-width:769px) {
+  .burger input[type="checkbox"] {
+    appearance: none;
+    transition: 300ms;
+  }
 
-    .customVisibility{
-      display: none;
-      visibility: hidden;
-      
-    }
-    
-    .burger-icon {
-      margin: 0.5rem;
-      width: 80%;
-    }
-    
-    .burger {
-      width: 50px;
-      height: 50px;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      user-select: none;
-      cursor: pointer;
-      transition: 300ms;
-      border-radius: 50px;
-      background-color: #FEF0EE;
-    }
-    .burger input[type="checkbox"] {
-      appearance: none;
-      transition: 300ms;
-    }
-    
-    .burger::before,
-    .burger::after {
-      content: "";
-      transition: 300ms;
-      transform-origin: center center;
-    }
-    
-    .burger::before {
-      transform: translateY(8px);
-    }
-    .burger::after {
-      transform: translateY(-8px);
-    }
-    .burger .line,
-    .burger::before,
-    .burger::after {
-      width: 25px;
-      height: 2.1px;
-      display: block;
-      background-color: black;
-      border-radius: 5px;
-      position: absolute;
-    }
-    
-    .burger .line:checked {
-      width: 0;
-      transition-delay: 100ms;
-    }
-    .burger:has(.line:checked)::before {
-      animation: animation1 400ms ease-out 0s 1 both;
-    }
-    .burger:has(.line:checked)::after {
-      animation: animation2 400ms ease-out 0s 1 both;
-    }
-    
-    .burger:hover {
-      background: #FEF0EE;
-      border-radius: 50%;
-    }
-    
-    .burger:hover .line,
-    .burger:hover::before,
-    .burger:hover::after {
-      background:black;
-    }
-    
-    .burger:active {
-      scale: 0.95;
-    }
-    @keyframes animation1 {
-      0% {
-        transform: translateY(8px) rotate(0deg);
-      }
-      50% {
-        transform: translateY(0px) rotate(0deg);
-      }
-      100% {
-        transform: translateY(0px) rotate(45deg);
-      }
-    }
-    @keyframes animation2 {
-      0% {
-        transform: translateY(-8px) rotate(0deg);
-      }
-      50% {
-        transform: translateY(0px) rotate(0deg);
-      }
-      100% {
-        transform: translateY(0px) rotate(-45deg);
-      }
-    }
+  .burger::before,
+  .burger::after {
+    content: "";
+    transition: 300ms;
+    transform-origin: center center;
+  }
 
+  .burger::before {
+    transform: translateY(8px);
+  }
+  .burger::after {
+    transform: translateY(-8px);
+  }
+  .burger .line,
+  .burger::before,
+  .burger::after {
+    width: 25px;
+    height: 2.1px;
+    display: block;
+    background-color: black;
+    border-radius: 5px;
+    position: absolute;
+  }
+
+  .burger .line:checked {
+    width: 0;
+    transition-delay: 100ms;
+  }
+  .burger:has(.line:checked)::before {
+    animation: animation1 400ms ease-out 0s 1 both;
+  }
+  .burger:has(.line:checked)::after {
+    animation: animation2 400ms ease-out 0s 1 both;
+  }
+
+  .burger:hover {
+    background: #fef0ee;
+    border-radius: 50%;
+  }
+
+  .burger:hover .line,
+  .burger:hover::before,
+  .burger:hover::after {
+    background: black;
+  }
+
+  .burger:active {
+    scale: 0.95;
+  }
+  @keyframes animation1 {
+    0% {
+      transform: translateY(8px) rotate(0deg);
+    }
+    50% {
+      transform: translateY(0px) rotate(0deg);
+    }
+    100% {
+      transform: translateY(0px) rotate(45deg);
+    }
+  }
+  @keyframes animation2 {
+    0% {
+      transform: translateY(-8px) rotate(0deg);
+    }
+    50% {
+      transform: translateY(0px) rotate(0deg);
+    }
+    100% {
+      transform: translateY(0px) rotate(-45deg);
+    }
+  }
 }
 
 /* Desktop View */
@@ -121,25 +118,44 @@
   }
   .nav-container {
     display: flex;
-
-  } 
+  }
   .navbar-nav {
     display: flex;
     justify-content: space-around;
     align-items: center;
     width: 100%;
-  } 
+  }
 
-  .nav-item{
-    margin:10px 20px;
+  .nav-item {
+    margin: 10px 20px;
     font-size: 10px;
   }
 }
 
-  .customVisibility{
-    display: flex;
-    justify-content: space-evenly;
-    width: 100%;
-    list-style: none;
+.customVisibility {
+  display: flex;
+  justify-content: space-evenly;
+  width: 100%;
+  list-style: none;
+}
 
-  }
+.cartIcon {
+  position: relative;
+}
+
+.cartItemsIndicator {
+  position: absolute;
+  top: -15px;
+  right: -10px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 20px;
+  height: 20px;
+  margin: 0;
+  padding: 0;
+  border-radius: 50%;
+  background-color: #ffffff;
+  border: 1px solid #000000;
+  font-size: 12px;
+}
