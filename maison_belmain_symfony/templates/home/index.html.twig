@@ -28,6 +28,10 @@
                     <td>{{ order.orderStatus }}</td>
                     <td>
                 </tr>
+            {% else %}
+            <tr>
+                <td colspan="6">No pending orders</td>
+            </tr>
             {% endfor %}
         </tbody>
     </table> 

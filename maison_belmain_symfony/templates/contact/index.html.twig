@@ -26,7 +26,6 @@
                 <td>{{ contact.message }}</td>
                 <td>
                     <a href="{{ path('app_contact_show', {'id': contact.id}) }}" class="btn btn-info">show</a>
-                    <a href="{{ path('app_contact_edit', {'id': contact.id}) }}" class="btn btn-warning">edit</a>
                 </td>
             </tr>
         {% else %}
@@ -36,6 +35,5 @@
         {% endfor %}
         </tbody>
     </table>
-
-    <a href="{{ path('app_contact_new') }}" class="btn btn-success">Create new</a>
+    
 {% endblock %}

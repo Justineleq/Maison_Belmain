@@ -111,7 +111,7 @@ class ProductController extends AbstractController
        /**
      * @Route("/product/update", name="update_product")
      */
-    public function updateProduct(Request $request): Response
+    public function updateProductPrice(Request $request): Response
     {
         // Fetch product (this can be from the request or your business logic)
         $product = $this->entityManager->getRepository(Product::class)->find($request->get('product_id'));

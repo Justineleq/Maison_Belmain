@@ -20,7 +20,7 @@ class ContactController extends AbstractController
     {
         $contacts = $contactRepository->findAll();
 
-        return $this->json(data: $contacts);
+        return $this->json(data: $contacts, context: ['groups' => 'api_contact_index']);
         
     }
 
@@ -30,9 +30,9 @@ class ContactController extends AbstractController
         EntityManagerInterface $em,
         SerializerInterface $serializer,
         ValidatorInterface $validator,
-        ContactRepository $contactRepository,
         ): Response
 {
+    
         $contact = $serializer->deserialize($request->getContent(), Contact::class, 'json');
 
         $errors = $validator->validate($contact);
@@ -46,15 +46,13 @@ class ContactController extends AbstractController
             }
 
             return $this->json(['errors' => $messages], Response::HTTP_UNPROCESSABLE_ENTITY);
-        } else
+        } 
+        else
         {
-
             $em->persist($contact);
             $em->flush();
 
             return $this->json(null, Response::HTTP_CREATED);
-
-
         }
     }
 }

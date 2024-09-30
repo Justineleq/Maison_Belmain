@@ -16,5 +16,8 @@ class ProductController extends AbstractController
         $products = $productRepo->findAll();
 
         return $this->json(data: $products, context: ['groups' => 'api_product_index']);
+
+        // var_dump($products);
     }
+    
 }

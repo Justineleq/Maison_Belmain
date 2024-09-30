@@ -15,7 +15,7 @@ use Symfony\Component\Security\Http\Attribute\IsGranted;
 #[Route('/recipeofthemonth', name: 'app_recipe_of_the_month_')]
 class RecipeOfTheMonthController extends AbstractController
 {
-    #[Route('/index', name: 'index', methods: ['GET'])]
+    #[Route('s', name: 'index', methods: ['GET'])]
     public function index(RecipeOfTheMonthRepository $recipeOfTheMonthRepository): Response
     {
         return $this->render('recipe_of_the_month/index.html.twig', [

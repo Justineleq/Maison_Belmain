@@ -12,6 +12,7 @@ use Symfony\Component\Serializer\Annotation\Groups;
 #[ORM\Entity(repositoryClass: ProductRepository::class)]
 class Product
 {
+    #[Groups('api_product_index')]
     #[ORM\Id]
     #[ORM\GeneratedValue]
     #[ORM\Column]

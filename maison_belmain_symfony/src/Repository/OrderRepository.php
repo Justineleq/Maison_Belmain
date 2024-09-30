@@ -22,12 +22,11 @@ class OrderRepository extends ServiceEntityRepository
        public function findPendingOrders(): array
        {
            return $this->createQueryBuilder('o')
-               ->andWhere('o.orderStatus = :orderStatus')
-               ->setParameter('orderStatus', 'Pending')
-               ->orderBy('o.id', 'DESC')
-               ->setMaxResults(10)
-               ->getQuery()
-               ->getResult()
+           ->innerJoin('o.orderStatus', 's')
+           ->where('s.title = :status')
+           ->setParameter('status', 'Pending')
+           ->getQuery()
+           ->getResult();
            ;
        }
 

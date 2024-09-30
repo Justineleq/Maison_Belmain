@@ -12,7 +12,7 @@ class PricingService
         $quantityValue = $quantity->getAmount();
         $baseAmount = $basePrice->getAmount();
 
-        // Example pricing logic based on quantity
+
         switch ($quantityValue) {
             case 6:
                 return 6 * 0.95;
