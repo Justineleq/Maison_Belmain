@@ -1,4 +1,5 @@
 import Link from "next/link";
+
 import "./navbar.css";
 import { Image } from "react-bootstrap";
 import NavMenu from "../navMenu/navMenu";

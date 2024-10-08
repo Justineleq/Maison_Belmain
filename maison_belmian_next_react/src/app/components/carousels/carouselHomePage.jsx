@@ -22,13 +22,16 @@ const CarousselHomePage = () => {
     <div className="slider-container w-full" style={{ backgroundColor: "#FEF0EE", padding: "20px" }}>
     <Slider {...settings}>
         <Link href={"/products/cupcake"}>
-          <Image width={300} height={200} src="/images/products/Cupcakes-red-velvet.jpg" alt="" />
+          <Image className='img-carousel' width={300} height={200} src="/images/products/Cupcakes-red-velvet.jpg" alt="cupcake" />
         </Link>
         <Link href={""}>
-          <Image width={300} height={200} src="/images/products/chocchip-cookies.jpg" alt="" />
+          <Image className='img-carousel' width={300} height={200} src="/images/products/chocchip-cookies.jpg" alt="cookie" />
         </Link>
         <Link href={""}>
-          <Image width={300} height={200} src="/images/products/mixed-brownies.jpg" alt="" />
+          <Image className='img-carousel' width={300} height={200} src="/images/products/mixed-brownies.jpg" alt="bronwie" />
+        </Link>
+        <Link href={""}>
+          <Image className='img-carousel' width={300} height={200} src="/images/products/wedding-bespoke.jpg" alt="bespoke" />
         </Link>
 
     </Slider>

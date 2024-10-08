@@ -28,8 +28,8 @@ export default function ProductCard(props) {
                 {product.flavour.name}
               </Card.Title>
               <Card.Text>{product.description}</Card.Text>
-              <Card.Text>Price: {product.finalPrice}€</Card.Text>
-              <Card.Text>Quantity: {product.quantity.amount}</Card.Text>
+              <Card.Text>Price : {product.finalPrice}€</Card.Text>
+              <Card.Text>Quantity : {product.quantity.amount}</Card.Text>
               <Button className='card-btn'
                 onClick={() => addToCart(product)} 
                 >

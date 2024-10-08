@@ -1,5 +1,7 @@
 "use client";
 
+import'./page.module.css';
+
 import { useEffect, useState } from "react";
 
 import Navbar from "./components/Includes/navbar/navbar";
@@ -40,6 +42,7 @@ export default function Home() {
       <main>
 
         <Navbar />
+        <div id="black-line-nav"></div>
 
         <HeroBanner/>
           <div className="home-paragraph">

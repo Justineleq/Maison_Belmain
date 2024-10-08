@@ -130,6 +130,13 @@
     margin: 10px 20px;
     font-size: 10px;
   }
+
+  #black-line-nav {
+    background-color: black;
+    height: 0.1rem;
+    width: 80%;
+    margin: auto;
+}
 }
 
 .customVisibility {

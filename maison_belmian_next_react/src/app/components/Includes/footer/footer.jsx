@@ -7,7 +7,7 @@ export default function Footer()
     
     return(
             <div className="footer">
-                <Link href="https://www.instagram.com/">
+                <Link href="https://www.instagram.com/maisonbelmain/">
                     <Image src="http://127.0.0.1:8000/images/Icons/icons8-instagram-48.png" alt="Instagram logo"/>
                 </Link>
                 <Link href="https://www.whatsapp.com/">

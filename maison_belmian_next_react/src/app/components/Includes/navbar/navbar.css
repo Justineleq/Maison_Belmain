@@ -1,6 +1,7 @@
 
-.navbar {
-    padding: 0;
+#logo {
+    border-radius: 50%;
+    margin: 1rem 5rem 1rem 5rem;
 }
 
 #header-top {
@@ -8,19 +9,34 @@
     width: 100%;
 }
 
-#logo {
-    border-radius: 50%;
-    margin: 1rem 5rem 1rem 5rem;
+.navbar {
+    padding: 0;
 }
 
-.title {
-    font-size: 2rem;
-    margin: 0;
+@media only screen and (max-width: 768px) {
+
+
+.main-title {
+    position: relative;
 }
 
-#black-line-logo {
-    background-color: black;
-    height: 0.1rem;
-    width: 70%;
 }
+ 
 
+/* Desktop */
+
+@media only screen and (min-width: 769px) {
+
+    .black-line-logo {
+        display: none;
+    }
+
+    .main-title {
+        position: absolute;
+        word-spacing: 16rem;
+    }
+
+    #header-logo {
+        position: relative
+    }
+}

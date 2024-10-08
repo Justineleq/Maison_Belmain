@@ -23,12 +23,12 @@ export default function BiscuitPage() {
       .then((data) => {
         setLoading(false);
 
-        // Trie le tableau de produit(s) pour identifier les produits avec la catégorie "Biscuit".
+        // sort through the table for "Biscuit".
         const onlyBiscuitProducts = data.filter(
           (product) => product.category.type === "Biscuit"
         );
 
-        // Enregistre le tableau de produit(s) biscuit(s) dans la variable d'état "data".
+        // save the 'biscuit' table in "data".
         setData(onlyBiscuitProducts ? onlyBiscuitProducts : []);
       })
       .catch((error) => {
@@ -57,13 +57,15 @@ export default function BiscuitPage() {
                   height={80}
                 />
         </div>
- {/* Si le fetch et le trie des produits c'est bien passé, j'affiche la liste de produits. */}
+ {/* If the fetch and sorting of the products went well, I display the list of products. */}
+ <div className='organise-product-cards'>
             {data && data.map((product, index) => (
               <ProductCard key={index} product={product} />
             ))}
-          {/* Si le fetch est en cours de chargement, j'affige un message informatif pour l'utilisateur */}
+            </div>
+          {/* If the fetch is loading, I display an information message for the user */}
           {!data && !error && loading && <p>Loading, please wait</p>}
-          {/* Si le fetch a rencontré une erreur, j'afficge un message informatif pour l'utilisateur */}
+          {/* If the fetch has encountered an error, I display an informative message to the user */}
           {!data && error && !loading && <p>An error occured, we're sorry ...</p>}
         </main>
         <Footer/>

@@ -72,22 +72,18 @@ export default function ContactPage(props) {
                 
                 <div className="form-container">                
                     <form className="form" onSubmit={handleContactForm}>
-               
                         <div className="mb-4">
                             <label htmlFor="formGroupExampleInput" className="form-label">Name :</label>
-                            <input type="text" className="form-control" id="formGroupExampleInput" placeholder="Sarah Smith"
+                            <input required type="text" className="form-control" id="formGroupExampleInput" placeholder="Sarah Smith"
                                 value={contact.name} 
                                 onChange={(e) => setContact({...contact, name: e.target.value})} />
-
                         </div>
-
                         <div className="mb-4">
                             <label htmlFor="exampleFormControlInput1" className="form-label">Email :</label>
-                            <input type="email" className="form-control" id="exampleFormControlInput1" placeholder="name@example.com" 
+                            <input required type="email" className="form-control" id="exampleFormControlInput1" placeholder="name@example.com" 
                                 value={contact.email} 
                                 onChange={(e) => setContact({...contact, email: e.target.value})} />
                         </div>
-
                         <label htmlFor="formGroupExampleInput" className="form-label">Subject :</label>
                         <select className="form-select mb-4" aria-label="Default select example"
                             value={contact.subject} 
@@ -99,25 +95,22 @@ export default function ContactPage(props) {
                             <option value="4">Bespoke</option>
                             <option value="5">Other</option>
                         </select>
-
                         <div className="mb-4">
                             <label htmlFor="exampleFormControlTextarea1" className="form-label">Message :</label>
                             <textarea className="form-control" id="exampleFormControlTextarea1" rows="3" placeholder='Write a message' 
                                 value={contact.message} 
                                 onChange={(e) => setContact({...contact, message: e.target.value})} ></textarea>
                         </div>
-
                         <div className='btn-container'>
                                 <Button type="submit" className='contact-btn'>Send</Button>
                         </div>
                     </form>
-
                     <Image className='background-contact-img'
                         src="/images/products/Cupcake-vanilla.jpg"
                     />
                 </div>
               {/* Display success or error messages */}
-              {loading && <p>Sending message...</p>}
+              {/* {loading && <p>Sending message...</p>} */}
                 {success && <p>Message sent successfully!</p>}
                 {error && <p>Something went wrong. Please try again.</p>}
                

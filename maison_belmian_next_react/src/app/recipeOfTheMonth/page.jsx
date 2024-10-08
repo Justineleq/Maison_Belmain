@@ -1,11 +1,29 @@
 "use client";
 
+import './style.css';
+
 import { Image } from "react-bootstrap";
 import Footer from "../components/Includes/footer/footer";
 import Navbar from "../components/Includes/navbar/navbar";
+import { useEffect, useState } from "react";
 
 export default function RecipeOfTheMonth() 
 {
+   const [recipes, setRecipe]= useState([]);
+
+        useEffect(() => {
+            const fetchSelectedRecipes = async () => {
+                const reponse = await fetch("http://127.0.0.1:8000/recipeofthemonths");
+                const data = await reponse.json();
+                setRecipe(data);
+            };
+
+            fetchSelectedRecipes();
+        }, [])
+    
+
+    // console.log(data(), 'ROTM');
+    
 
     return(
         <>
@@ -17,21 +35,37 @@ export default function RecipeOfTheMonth()
                 </div>
             </div>
 
-            <div className="bespoke-img">
-                    <Image style={{ 
-                        margin: 10,
-                        borderRadius: '10px'}}
-                        src='/images/products/Cupcakes-red-velvet.jpg'
-                        height={200}
-                        width={100}
-                        >
-                    </Image>
-            </div>
+        {recipes.length === 0 ? (
+            //insert image here, maybe a sad cake?
+            <p>
+                No recipes this month 
+            </p>
+        ) : (
             <div>
-                <p className="ROTM-paragraph">
-                Welcome to our Recipe of the Month! This September, we're delighted to feature our decadent Salted Caramel Apple Cake, a perfect blend of sweet and savory that embodies the essence of autumn. Imagine layers of moist, spiced apple cake, infused with a rich caramel sauce, and topped with a sprinkle of sea salt for that irresistible contrast. Each slice is a celebration of fall flavors, with tender apple chunks and a buttery caramel drizzle that creates a melt-in-your-mouth experience. Whether you're hosting a cozy gathering or simply indulging in a quiet moment, this cake is sure to bring warmth and delight to every occasion
-                </p>
+                {recipes.map((recipe) => (
+                    <div>
+                        <div key={recipe.id} className="bespoke-img">
+                        
+                            <Image className="img-ROTM"
+                                src={recipe.image}
+                                height={200}
+                                width={100}
+                                >
+                            </Image>
+                            
+                    </div>
+                    <div>
+                        <p className="ROTM-paragraph">
+                            {recipe.description}
+                        </p>
+                    </div>
+                </div>
+
+                ))}
+
             </div>
+
+        )}
 
             </main>
             <Footer/>

@@ -2,11 +2,13 @@
 
 import "./style.css";
 import { CartContext } from "@/AppContext";
-import { useContext } from "react";
+import { useContext, useState } from "react";
 import { Button } from "react-bootstrap";
 
 export default function ShoppingCart() {
   const { cart, removeFromCart } = useContext(CartContext);
+    const [error, setError] = useState(true);
+    const [loading, setLoading] = useState(true);
 
   const handleOrderSubmition = () => {
     fetch("http://localhost:8000/api/order/create", {

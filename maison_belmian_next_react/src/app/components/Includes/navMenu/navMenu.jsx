@@ -34,37 +34,37 @@ export default function NavMenu() {
               style={{ listStyle: "none" }}
             >
               <li className="nav-item">
-                <Link className="nav-link fs-5" href="/">
+                <Link className="nav-link fs-6" href="/">
                   Home
                 </Link>
               </li>
               <li className="nav-item">
-                <Link className="nav-link fs-5" href="/products/bespoke">
+                <Link className="nav-link fs-6" href="/products/bespoke">
                   Bespoke
                 </Link>
               </li>
               <li className="nav-item">
-                <Link className="nav-link fs-5" href="/products/brownie">
+                <Link className="nav-link fs-6" href="/products/brownie">
                   Brownies
                 </Link>
               </li>
               <li className="nav-item">
-                <Link className="nav-link fs-5" href="/products/biscuit">
+                <Link className="nav-link fs-6" href="/products/biscuit">
                   Biscuits
                 </Link>
               </li>
               <li className="nav-item">
-                <Link className="nav-link fs-5" href="/products/cupcake">
+                <Link className="nav-link fs-6" href="/products/cupcake">
                   Cupcakes
                 </Link>
               </li>
               <li className="nav-item">
-                <Link className="nav-link fs-5" href="/recipeOfTheMonth">
+                <Link className="nav-link fs-6" href="/recipeOfTheMonth">
                   Recipe of the month
                 </Link>
               </li>
               <li className="nav-item">
-                <Link className="nav-link fs-5" href="/contact">
+                <Link className="nav-link fs-6" href="/contact">
                   Contact
                 </Link>
               </li>
@@ -73,7 +73,7 @@ export default function NavMenu() {
         </div>
       </div>
       <div>
-        <Link className="nav-link fs-5 cartIcon" href="/shoppingCart">
+        <Link className="nav-link fs-6 cartIcon" href="/shoppingCart">
           {cart && cart.length > 0 && <p className="cartItemsIndicator">{cart.length}</p>}
           <img
             src={"http://localhost:8000/images/" + shoppingCartIcon}
@@ -83,6 +83,10 @@ export default function NavMenu() {
           />
         </Link>
       </div>
+
     </div>
+
+          
+      
   );
 }
