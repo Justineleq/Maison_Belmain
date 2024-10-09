@@ -5,6 +5,7 @@ namespace App\Entity;
 use App\Repository\RecipeOfTheMonthRepository;
 use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Serializer\Annotation\Groups;
 
 #[ORM\Entity(repositoryClass: RecipeOfTheMonthRepository::class)]
 class RecipeOfTheMonth
@@ -14,12 +15,15 @@ class RecipeOfTheMonth
     #[ORM\Column]
     private ?int $id = null;
 
+    #[Groups('api_rotm_index')]
     #[ORM\Column(length: 255)]
     private ?string $title = null;
 
+    #[Groups('api_rotm_index')]
     #[ORM\Column(length: 255)]
     private ?string $image = null;
 
+    #[Groups('api_rotm_index')]
     #[ORM\Column(type: Types::TEXT)]
     private ?string $description = null;
 

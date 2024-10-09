@@ -2,18 +2,24 @@
 
 namespace App\Controller\Api;
 
+use App\Repository\RecipeOfTheMonthRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Attribute\Route;
 
-#[Route('/api/recipeofthemonth', name: 'app_api_recipe_of_the_month_')]
+
 class RecipeOfTheMonthController extends AbstractController
 {
-    #[Route('s', name: 'index')]
-    public function index(): Response
+    #[Route('/api/recipeofthemonth', name: 'app_api_recipe_of_the_month_index')]
+    public function index(RecipeOfTheMonthRepository $rotmRepo): Response
     {
-        return $this->render('api/recipe_of_the_month/index.html.twig', [
-            'controller_name' => 'RecipeOfTheMonthController',
-        ]);
+        //findBy function to find isselected????
+        $rotm = $rotmRepo->findAll();
+
+        return $this->json(data: $rotm, context: ['groups' => 'api_rotm_index']);
+
+        var_dump($rotm);
     }
+
+
 }

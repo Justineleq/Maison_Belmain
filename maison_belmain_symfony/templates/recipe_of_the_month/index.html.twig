@@ -1,50 +1,58 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Recipe Of The Month index{% endblock %}
+{% block title %}Recipe Of The Month Index{% endblock %}
 
 {% block body %}
-    <h1>Recipe Of The Month index</h1>
+    <h1>Recipe Of The Month Index</h1>
 
-    <table class="table">
-        <thead>
-            <tr>
-                <th>Id</th>
-                <th>Title</th>
-                <th>Image</th>
-                <th>Description</th>
-                <th>Selected</th>
-                <th>actions</th>
-            </tr>
-        </thead>
-        <tbody>
-        {% for recipe_of_the_month in recipe_of_the_months %}
-            <tr>
-                <td>{{ recipe_of_the_month.id }}</td>
-                <td>{{ recipe_of_the_month.title }}</td>
-                <td>{{ recipe_of_the_month.image }}</td>
-                <td>{{ recipe_of_the_month.description }}</td>
-                <td>
-                    <input type="checkbox" class="rotm-checkbox" />
-                </td>
+    <form action="{{ path('app_recipe_of_the_month_index') }}" method="post">
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>Id</th>
+                    <th>Title</th>
+                    <th>Image</th>
+                    <th>Description</th>
+                    <th>Selected</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+            {% for recipe_of_the_month in recipe_of_the_months %}
+                <tr>
+                    <td>{{ recipe_of_the_month.id }}</td>
+                    <td>{{ recipe_of_the_month.title }}</td>
+                    <td>
+                        {% if recipe_of_the_month.image %}
+                            <img src="{{ asset('images/Products/' ~ recipe_of_the_month.image) }}" alt="{{ recipe_of_the_month.title }}" style="max-width: 100px;">
+                        {% else %}
+                            No image
+                        {% endif %}
+                    </td>
+                    <td>{{ recipe_of_the_month.description }}</td>
+                    <td>
+                        <input type="radio" class="rotm-checkbox" name="selected" value="{{ recipe_of_the_month.id }}"
+                               {% if recipe_of_the_month.isSelected %} checked {% endif %} />
+                    </td>
+                    <td>
+                        <a href="{{ path('app_recipe_of_the_month_show', {'id': recipe_of_the_month.id}) }}" class="btn btn-info">Show</a>
+                        <a href="{{ path('app_recipe_of_the_month_edit', {'id': recipe_of_the_month.id}) }}" class="btn btn-warning">Edit</a>
+                    </td>
+                </tr>
+            {% else %}
+                <tr>
+                    <td colspan="6">No records found</td>
+                </tr>
+            {% endfor %}
+            </tbody>
+        </table>
 
+        <button type="submit" class="btn btn-primary">Select Recipe of the Month</button>
+    </form>
 
-                <td>
-                    <a href="{{ path('app_recipe_of_the_month_show', {'id': recipe_of_the_month.id}) }}" class="btn btn-info">show</a>
-                    <a href="{{ path('app_recipe_of_the_month_edit', {'id': recipe_of_the_month.id}) }}" class="btn btn-warning">edit</a>
-                </td>
-            </tr>
-        {% else %}
-            <tr>
-                <td colspan="5">no records found</td>
-            </tr>
-        {% endfor %}
-        </tbody>
-    </table>
+    <a href="{{ path('app_recipe_of_the_month_new') }}" class="btn btn-success">Create New</a>
 
-    <a href="{{ path('app_recipe_of_the_month_new') }}" class="btn btn-success">Create new</a>
- 
- <script>
-        
+    <script>
         const checkboxes = document.querySelectorAll('.rotm-checkbox');
 
         checkboxes.forEach((checkbox) => {
@@ -59,5 +67,4 @@
             });
         });
     </script>
-
 {% endblock %}

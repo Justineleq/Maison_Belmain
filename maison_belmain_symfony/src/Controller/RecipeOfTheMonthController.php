@@ -4,7 +4,6 @@ namespace App\Controller;
 
 use App\Entity\RecipeOfTheMonth;
 use App\Form\RecipeOfTheMonthType;
-use App\Repository\RecipeOfTheMonthRepository;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
@@ -15,11 +14,33 @@ use Symfony\Component\Security\Http\Attribute\IsGranted;
 #[Route('/recipeofthemonth', name: 'app_recipe_of_the_month_')]
 class RecipeOfTheMonthController extends AbstractController
 {
-    #[Route('s', name: 'index', methods: ['GET'])]
-    public function index(RecipeOfTheMonthRepository $recipeOfTheMonthRepository): Response
+    #[Route('s', name: 'index', methods: ['GET', 'POST'])]
+    public function index(Request $request, EntityManagerInterface $entityManager): Response
     {
+        if ($request->isMethod('POST')) {
+            $selectedRecipeId = $request->request->get('selected');
+
+            // Clear all selections
+            $recipes = $entityManager->getRepository(RecipeOfTheMonth::class)->findAll();
+            foreach ($recipes as $recipe) {
+                $recipe->setSelected(false);
+                $entityManager->persist($recipe);
+            }
+
+            // Set the selected recipe
+            if ($selectedRecipeId) {
+                $selectedRecipe = $entityManager->getRepository(RecipeOfTheMonth::class)->find($selectedRecipeId);
+                if ($selectedRecipe) {
+                    $selectedRecipe->setSelected(true);
+                    $entityManager->persist($selectedRecipe);
+                }
+            }
+
+            $entityManager->flush();
+        }
+
         return $this->render('recipe_of_the_month/index.html.twig', [
-            'recipe_of_the_months' => $recipeOfTheMonthRepository->findAll(),
+            'recipe_of_the_months' => $entityManager->getRepository(RecipeOfTheMonth::class)->findAll(),
         ]);
     }
 
@@ -82,4 +103,5 @@ class RecipeOfTheMonthController extends AbstractController
 
         return $this->redirectToRoute('app_recipe_of_the_month_index', [], Response::HTTP_SEE_OTHER);
     }
+
 }
