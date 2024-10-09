@@ -67,7 +67,8 @@ export default function ShoppingCart() {
               </tbody>
             ))}
           </table>
-          <div className="order-div d-flex justify-content-center">
+          <div className="order-div d-flex flex-column align-items-center">
+          <p><strong>** All orders sent will be reviewed by Joanne and you will be updated on the status in due course **</strong></p>
             <Button className="btn-make-order" onClick={() => handleOrderSubmition()}>
                 Send order
             </Button>

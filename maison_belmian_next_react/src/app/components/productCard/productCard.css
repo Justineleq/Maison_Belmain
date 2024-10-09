@@ -18,3 +18,8 @@
     background-color: #7FCCD8;
     border: #7FCCD8;
 }
+
+.product-card-container {
+    display: flex;
+    flex-wrap: wrap;
+}

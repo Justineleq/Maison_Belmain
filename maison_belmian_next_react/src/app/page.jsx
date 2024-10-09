@@ -42,9 +42,7 @@ export default function Home() {
       <main>
 
         <Navbar />
-        <div id="black-line-nav"></div>
-
-        <HeroBanner/>
+           <HeroBanner/>
           <div className="home-paragraph">
             <p>
                 Specialising in birthday and wedding cakes, and luxury pastries, at Maison Belmain there are no limits, except your own imagination.

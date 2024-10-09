@@ -15,4 +15,5 @@
     position: relative;
     display: flex;
     border-radius: 10px;
+    object-fit: cover;
 }

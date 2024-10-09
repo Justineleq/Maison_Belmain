@@ -58,11 +58,11 @@ export default function BiscuitPage() {
                 />
         </div>
  {/* If the fetch and sorting of the products went well, I display the list of products. */}
- <div className='organise-product-cards'>
+        <div className='organise-product-cards'>
             {data && data.map((product, index) => (
               <ProductCard key={index} product={product} />
             ))}
-            </div>
+        </div>
           {/* If the fetch is loading, I display an information message for the user */}
           {!data && !error && loading && <p>Loading, please wait</p>}
           {/* If the fetch has encountered an error, I display an informative message to the user */}

@@ -15,6 +15,7 @@ export default function NavMenu() {
   };
 
   return (
+    <div>
     <div className="navbar-menu">
       <div className="burger-icon">
         <label className="burger" htmlFor="burger">
@@ -34,37 +35,37 @@ export default function NavMenu() {
               style={{ listStyle: "none" }}
             >
               <li className="nav-item">
-                <Link className="nav-link fs-6" href="/">
+                <Link className="nav-link m-2 fs-6" href="/">
                   Home
                 </Link>
               </li>
               <li className="nav-item">
-                <Link className="nav-link fs-6" href="/products/bespoke">
+                <Link className="nav-link m-2 fs-6" href="/products/bespoke">
                   Bespoke
                 </Link>
               </li>
               <li className="nav-item">
-                <Link className="nav-link fs-6" href="/products/brownie">
+                <Link className="nav-link m-2 fs-6" href="/products/brownie">
                   Brownies
                 </Link>
               </li>
               <li className="nav-item">
-                <Link className="nav-link fs-6" href="/products/biscuit">
+                <Link className="nav-link m-2 fs-6" href="/products/biscuit">
                   Biscuits
                 </Link>
               </li>
               <li className="nav-item">
-                <Link className="nav-link fs-6" href="/products/cupcake">
+                <Link className="nav-link m-2 fs-6" href="/products/cupcake">
                   Cupcakes
                 </Link>
               </li>
               <li className="nav-item">
-                <Link className="nav-link fs-6" href="/recipeOfTheMonth">
+                <Link className="nav-link m-2 fs-6" href="/recipeOfTheMonth">
                   Recipe of the month
                 </Link>
               </li>
               <li className="nav-item">
-                <Link className="nav-link fs-6" href="/contact">
+                <Link className="nav-link m-2 fs-6" href="/contact">
                   Contact
                 </Link>
               </li>
@@ -83,10 +84,8 @@ export default function NavMenu() {
           />
         </Link>
       </div>
-
     </div>
-
-          
-      
+    <div id="black-line-nav"></div>
+    </div>
   );
 }

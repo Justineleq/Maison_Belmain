@@ -1,11 +1,9 @@
-#black-line {
-    background-color: black;
-    height: 0.1rem;
-    width: 70%;
-    margin-bottom: 15px;
-}
 
-#about-me-div {
+
+/* Mobile */
+@media only screen and (max-width: 768px) {
+    
+#about-me-container {
     display: flex;
     align-items: center;
     flex-direction: column;
@@ -14,6 +12,7 @@
 #about-me-image {
     display: flex;
     justify-content: center;
+    border-radius: 10px;
 }
 
 .about-me-paragraph {
@@ -21,14 +20,30 @@
     margin: 15px 15px 15px 15px;
     font-size: 11px;
   }
+}
+
 
   @media only screen and (min-width: 769px) {
 
-    #about-me-image {
-        float: left;
+    #about-me-container {
+        overflow: hidden;
+        margin: 15px;
     }
 
-    .about-me-paragraph{
-        text-align: justify;
+    .about-me-image {
+        float: left;
+        margin-right: 15px; 
+        border-radius: 10px;
+    }
+    
+    .about-me-paragraph {
+        line-height: 1.5; 
+    }
+
+    #black-line {
+        background-color: black;
+        height: 0.1rem;
+        width: 70%;
+        margin: auto;
     }
   }

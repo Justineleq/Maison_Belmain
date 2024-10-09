@@ -19,18 +19,18 @@ const CarousselHomePage = () => {
         }
       };
   return (
-    <div className="slider-container w-full" style={{ backgroundColor: "#FEF0EE", padding: "20px" }}>
+    <div className="slider-container w-full" style={{ backgroundColor: "#FEF0EE", padding: "30px" }}>
     <Slider {...settings}>
         <Link href={"/products/cupcake"}>
           <Image className='img-carousel' width={300} height={200} src="/images/products/Cupcakes-red-velvet.jpg" alt="cupcake" />
         </Link>
-        <Link href={""}>
-          <Image className='img-carousel' width={300} height={200} src="/images/products/chocchip-cookies.jpg" alt="cookie" />
+        <Link href={"/products/biscuit"}>
+          <Image className='img-carousel' width={300} height={200} src="/images/products/chocochip-cookies.jpg" alt="biscuit" />
         </Link>
-        <Link href={""}>
+        <Link href={"/products/brownie"}>
           <Image className='img-carousel' width={300} height={200} src="/images/products/mixed-brownies.jpg" alt="bronwie" />
         </Link>
-        <Link href={""}>
+        <Link href={"/products/bespoke"}>
           <Image className='img-carousel' width={300} height={200} src="/images/products/wedding-bespoke.jpg" alt="bespoke" />
         </Link>
 

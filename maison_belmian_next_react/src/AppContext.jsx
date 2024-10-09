@@ -42,6 +42,16 @@ export const CartProvider = ({ children }) => {
 };
 
 const checkLocalStorageSavedCart = () => {
-  const savedCart = localStorage.getItem("userCart");
+  let savedCart
+
+  try{
+    if(typeof window !== "undefined"){
+      savedCart = window.localStorage.getItem("userCart");
+
+    }
+
+  }catch(e){
+    console.log(e)
+  }
   return savedCart ? JSON.parse(savedCart) : [];
 };

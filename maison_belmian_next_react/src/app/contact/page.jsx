@@ -18,9 +18,10 @@ export default function ContactPage(props) {
 
     const [loading, setLoading] = useState(true); 
     const [error, setError] = useState(false); 
-    const [success, setSuccess] = useState(false); // To control success message
+    const [success, setSuccess] = useState(false); 
 
     console.log(props, 'props from contact');
+
 
     async function handleContactForm(event) {
         event.preventDefault();
@@ -29,6 +30,7 @@ export default function ContactPage(props) {
         setSuccess(false);
     
         const { name, email, subject, message } = contact;
+
     
         try {
             const response = await fetch('http://127.0.0.1:8000/api/contact/new', {
@@ -59,6 +61,9 @@ export default function ContactPage(props) {
                 subject: '',
                 message: ''
             })
+
+            setTimeout(() => setSuccess(false), 3000); 
+            
         } catch (error) {
             setError(true);
             setLoading(false);
@@ -88,7 +93,7 @@ export default function ContactPage(props) {
                         <select className="form-select mb-4" aria-label="Default select example"
                             value={contact.subject} 
                             onChange={(e) => setContact({ ...contact, subject: e.target.value })}>
-                            <option defaultValue>Select your subject</option>
+                            <option required defaultValue>Select your subject</option>
                             <option value="1">Biscuits</option>
                             <option value="2">Cupcakes</option>
                             <option value="3">Brownies</option>
@@ -97,7 +102,7 @@ export default function ContactPage(props) {
                         </select>
                         <div className="mb-4">
                             <label htmlFor="exampleFormControlTextarea1" className="form-label">Message :</label>
-                            <textarea className="form-control" id="exampleFormControlTextarea1" rows="3" placeholder='Write a message' 
+                            <textarea required className="form-control" id="exampleFormControlTextarea1" rows="3" placeholder='Write a message' 
                                 value={contact.message} 
                                 onChange={(e) => setContact({...contact, message: e.target.value})} ></textarea>
                         </div>
@@ -111,7 +116,7 @@ export default function ContactPage(props) {
                 </div>
               {/* Display success or error messages */}
               {/* {loading && <p>Sending message...</p>} */}
-                {success && <p>Message sent successfully!</p>}
+                {success && <p class="alert alert-success" role="alert">Message sent successfully!</p>}
                 {error && <p>Something went wrong. Please try again.</p>}
                
             </main>
