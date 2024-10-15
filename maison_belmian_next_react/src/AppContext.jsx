@@ -5,13 +5,16 @@ import { createContext, useState, useEffect } from "react";
 export const CartContext = createContext();
 
 export const CartProvider = ({ children }) => {
-  // Vérifie la présence d'un panier dans le local storage et l'utilise s'il existe
   const [cart, setCart] = useState(checkLocalStorageSavedCart);
 
-  // Sauvegarde le panier dans le local storage lorsqu'il est modifié
+// Save in localstorage
   useEffect(() => {
-    localStorage.setItem("userCart", JSON.stringify(cart));
+    if (typeof window !== 'undefined'){
+      localStorage.setItem("userCart", JSON.stringify(cart));
+  
+    }
   }, [cart]);
+    
 
   // Adds products to the cart
   const addToCart = (product) => {
@@ -42,16 +45,14 @@ export const CartProvider = ({ children }) => {
 };
 
 const checkLocalStorageSavedCart = () => {
-  let savedCart
+  let savedCart 
+try{
+  if(typeof window !== undefined)
+  savedCart  = localStorage.getItem("userCart") ?? ""
 
-  try{
-    if(typeof window !== "undefined"){
-      savedCart = window.localStorage.getItem("userCart");
+}catch{
+  console.log('error')
+}
 
-    }
-
-  }catch(e){
-    console.log(e)
-  }
   return savedCart ? JSON.parse(savedCart) : [];
 };

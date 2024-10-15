@@ -3,17 +3,25 @@
 import "./style.css";
 import { CartContext } from "@/AppContext";
 import { useContext, useState } from "react";
-import { Button } from "react-bootstrap";
+import { Button, Alert } from "react-bootstrap";
 
 export default function ShoppingCart() {
   const { cart, removeFromCart } = useContext(CartContext);
-    const [error, setError] = useState(true);
-    const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(null);
+  const [loading, setLoading] = useState(false);
+  const [success, setSuccess] = useState(null);
 
-  const handleOrderSubmition = () => {
+  const handleOrderSubmission = () => {
+    setLoading(true);
+    setError(null);
+    setSuccess(null);
+
     fetch("http://localhost:8000/api/order/create", {
       method: "POST",
-      body: JSON.stringify({ cart: cart }),
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify({ cart }),
     })
       .then((response) => {
         if (!response.ok) {
@@ -22,18 +30,23 @@ export default function ShoppingCart() {
         return response.json();
       })
       .then((data) => {
+        console.log(cart);
+        
         setLoading(false);
-        // Si nous somme ici, c'est que le POST de la commande c'est bien déroulé, reste à informer l'utilisateur
+        setSuccess(data.message);
       })
       .catch((error) => {
         console.error("Error fetching data:", error);
-        setError(true);
+        setError("There was an issue submitting your order.");
         setLoading(false);
       });
   };
 
   return (
     <>
+      {error && <Alert variant="danger">{error}</Alert>}
+      {loading && <Alert variant="info">Submitting your order...</Alert>}
+      {success && <Alert variant="success">{success}</Alert>}
       {cart.length === 0 ? (
         <h3>Your cart is empty</h3>
       ) : (
@@ -48,8 +61,8 @@ export default function ShoppingCart() {
                 <th scope="col"></th>
               </tr>
             </thead>
-            {cart.map((product, index) => (
-              <tbody key={"shopping_cart_item_" + index}>
+            <tbody>
+              {cart.map((product, index) => (
                 <tr key={product.id}>
                   <td>{product.flavour.name}</td>
                   <td>{product.category.type}</td>
@@ -64,15 +77,15 @@ export default function ShoppingCart() {
                     </Button>
                   </td>
                 </tr>
-              </tbody>
-            ))}
+              ))}
+            </tbody>
           </table>
           <div className="order-div d-flex flex-column align-items-center">
-          <p><strong>** All orders sent will be reviewed by Joanne and you will be updated on the status in due course **</strong></p>
-            <Button className="btn-make-order" onClick={() => handleOrderSubmition()}>
-                Send order
+            <Button className="btn-make-order" onClick={handleOrderSubmission}>
+              Send order
             </Button>
           </div>
+          <p><strong>** All orders sent will be reviewed by Joanne and you will be updated on the status in due course **</strong></p>
         </>
       )}
     </>
