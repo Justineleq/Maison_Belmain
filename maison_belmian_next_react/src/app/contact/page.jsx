@@ -93,7 +93,7 @@ export default function ContactPage(props) {
                         <select className="form-select mb-4" aria-label="Default select example"
                             value={contact.subject} 
                             onChange={(e) => setContact({ ...contact, subject: e.target.value })}>
-                            <option required defaultValue>Select your subject</option>
+                            <option  defaultValue>Select your subject</option>
                             <option value="1">Biscuits</option>
                             <option value="2">Cupcakes</option>
                             <option value="3">Brownies</option>

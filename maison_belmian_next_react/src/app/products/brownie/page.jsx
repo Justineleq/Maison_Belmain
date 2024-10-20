@@ -23,12 +23,12 @@ export default function BrowniePage() {
       .then((data) => {
         setLoading(false);
 
-        // Trie le tableau de produit(s) pour identifier les produits avec la catégorie "Brownie".
+        // Filter through products to find brownie
         const onlyBrownieProducts = data.filter(
           (product) => product.category.type === "Brownie"
         );
 
-        // Enregistre le tableau de produit(s) brownie(s) dans la variable d'état "data".
+        // set data to all the  brownie products
         setData(onlyBrownieProducts ? onlyBrownieProducts : []);
       })
       .catch((error) => {
@@ -48,24 +48,28 @@ export default function BrowniePage() {
         <main>
             <Navbar/>
 
-            <div className="product-container">
-              <h2 className="title-product-page">Brownie</h2>
+            <div className="product-card-titles">
+              <h2 className="title-product-page">Brownies</h2>
                 <Image className="image-title-product-page"
                   src='/images/products/chocolate-brownies.jpg'
-                  priority={true}
+                  priority={true} 
                   alt= 'yummy brownie image'
                   width={200}
                   height={80}
                 />
         </div>
- {/* Si le fetch et le trie des produits c'est bien passé, j'affiche la liste de produits. */}
+        <div className="product-container">
+
+ {/* If the fetch and filter is good then load  */}
             {data && data.map((product, index) => (
               <ProductCard key={index} product={product} />
             ))}
-          {/* Si le fetch est en cours de chargement, j'affige un message informatif pour l'utilisateur */}
+          {/* If the fetch is still loading  */}
           {!data && !error && loading && <p>Loading, please wait</p>}
-          {/* Si le fetch a rencontré une erreur, j'afficge un message informatif pour l'utilisateur */}
+          {/* If the fetch didn't work then error */}
           {!data && error && !loading && <p>An error occured, we're sorry ...</p>}
+        </div>
+
         </main>
         <Footer/>
     </>

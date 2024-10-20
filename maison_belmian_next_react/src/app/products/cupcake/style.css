@@ -3,6 +3,11 @@
     justify-content: center;
 }
 
+.product-card-titles{
+    display: flex;
+    justify-content: center;
+}
+
 .title-product-page{
     position: absolute;
     color: white;

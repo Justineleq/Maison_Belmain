@@ -23,12 +23,10 @@ export default function CupcakePage() {
       .then((data) => {
         setLoading(false);
 
-        // Trie le tableau de produit(s) pour identifier les produits avec la catégorie "Cupcake".
         const onlyCupcakeProducts = data.filter(
           (product) => product.category.type === "Cupcake"
         );
 
-        // Enregistre le tableau de produit(s) Cupcake(s) dans la variable d'état "data".
         setData(onlyCupcakeProducts ? onlyCupcakeProducts : []);
       })
       .catch((error) => {
@@ -48,23 +46,22 @@ export default function CupcakePage() {
         <main>
             <Navbar/>
 
-            <div className="product-container">
-              <h2 className="title-product-page">Cupcake</h2>
+            <div className='product-card-titles'>
+              <h2 className="title-product-page">Cupcakes</h2>
                 <Image className="image-title-product-page"
-                  src='/images/products/honey-yanibel-minaya-cruz-fPWxYxfBVYM-unsplash.jpg'
+                  src='/images/products/Cupcakes-red-velvet.jpg'
                   alt= 'yummy cupcake image'
                   width={200}
                   height={80}
                 />
-        </div>
- {/* Si le fetch et le trie des produits c'est bien passé, j'affiche la liste de produits. */}
+            </div>
+          <div className="product-container">
             {data && data.map((product, index) => (
               <ProductCard key={index} product={product} />
             ))}
-          {/* Si le fetch est en cours de chargement, j'affige un message informatif pour l'utilisateur */}
-          {!data && !error && loading && <p>Loading, please wait</p>}
-          {/* Si le fetch a rencontré une erreur, j'afficge un message informatif pour l'utilisateur */}
-          {!data && error && !loading && <p>An error occured, we're sorry ...</p>}
+            {!data && !error && loading && <p>Loading, please wait</p>}
+            {!data && error && !loading && <p>An error occured, we're sorry ...</p>}
+          </div>
         </main>
         <Footer/>
     </>

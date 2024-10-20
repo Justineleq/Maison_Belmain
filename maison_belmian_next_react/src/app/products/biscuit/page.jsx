@@ -48,8 +48,8 @@ export default function BiscuitPage() {
         <main>
             <Navbar/>
 
-            <div className="product-container">
-              <h2 className="title-product-page">Biscuit</h2>
+            <div className="product-card-titles">
+              <h2 className="title-product-page">Biscuits</h2>
                 <Image className="image-title-product-page"
                   src='/images/products/chocochip-cookies.jpg'
                   alt= 'yummy biscuit image'
@@ -58,7 +58,7 @@ export default function BiscuitPage() {
                 />
         </div>
  {/* If the fetch and sorting of the products went well, I display the list of products. */}
-        <div className='organise-product-cards'>
+        <div className='product-container'>
             {data && data.map((product, index) => (
               <ProductCard key={index} product={product} />
             ))}

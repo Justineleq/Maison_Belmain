@@ -13,6 +13,14 @@
     padding: 0;
 }
 
+#black-line-logo {
+    background-color: black;
+    height: 0.1rem;
+    width: 70%;
+    margin: auto;
+}
+
+/* Mobile */
 @media only screen and (max-width: 768px) {
 
 .main-title {
@@ -26,7 +34,7 @@
 
 @media only screen and (min-width: 769px) {
 
-    .black-line-logo {
+    #black-line-logo {
         display: none;
     }
 

@@ -6,7 +6,7 @@ import { useContext, useState } from "react";
 import { Button, Alert } from "react-bootstrap";
 
 export default function ShoppingCart() {
-  const { cart, removeFromCart } = useContext(CartContext);
+  const { cart, removeFromCart, clearCart } = useContext(CartContext);
   const [error, setError] = useState(null);
   const [loading, setLoading] = useState(false);
   const [success, setSuccess] = useState(null);
@@ -34,6 +34,7 @@ export default function ShoppingCart() {
         
         setLoading(false);
         setSuccess(data.message);
+        clearCart()
       })
       .catch((error) => {
         console.error("Error fetching data:", error);
@@ -84,8 +85,9 @@ export default function ShoppingCart() {
             <Button className="btn-make-order" onClick={handleOrderSubmission}>
               Send order
             </Button>
+            <p><strong>** All orders sent will be reviewed by Joanne and you will be updated on the status in due course **</strong></p>
           </div>
-          <p><strong>** All orders sent will be reviewed by Joanne and you will be updated on the status in due course **</strong></p>
+
         </>
       )}
     </>

@@ -4,7 +4,7 @@
     flex-direction: column
 }
 
-.title-product-page {
+.title-bespoke-page {
     text-decoration: underline;
     text-underline-offset: '4px',
 }
@@ -15,7 +15,7 @@
 }
 
 .bespoke-btn{
-    margin: 10;
+    margin: 4%;
     background-color: #7FCCD8;
     border: #7FCCD8
 }
