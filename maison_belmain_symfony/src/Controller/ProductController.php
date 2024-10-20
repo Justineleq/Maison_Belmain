@@ -20,7 +20,7 @@ class ProductController extends AbstractController
     private $entityManager;
     private $pricingService;
 
-
+    #[IsGranted('ROLE_USER')]
     #[Route('s', name: 'index', methods: ['GET'])]
     public function index(ProductRepository $productRepository): Response
     {

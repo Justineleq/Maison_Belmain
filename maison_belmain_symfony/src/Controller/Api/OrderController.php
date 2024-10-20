@@ -12,6 +12,7 @@ use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Attribute\Route;
+
 #[Route('/api/order', name: 'api_app_order_')]
 class OrderController extends AbstractController
 {
@@ -36,7 +37,6 @@ class OrderController extends AbstractController
                 return new JsonResponse(['error' => 'Product ID is missing'], Response::HTTP_BAD_REQUEST);
             }
 
-            // Fetch the product entity from the database
             $product = $em->getRepository(Product::class)->find($productId);
             if (!$product) {
                 return new JsonResponse(['error' => 'Product not found'], Response::HTTP_NOT_FOUND);
@@ -44,22 +44,20 @@ class OrderController extends AbstractController
 
             $order->addProduct($product);
 
-            // Assuming getPrice() returns a ProductPrice object
             $productPrice = $product->getPrice();
             if ($productPrice instanceof ProductPrice) {
-                $totalPrice += $productPrice->getAmount(); // Adjust according to your ProductPrice class
+                $totalPrice += $productPrice->getAmount(); 
             } else {
-                $totalPrice += $productPrice; // If it's already a numeric type
+                $totalPrice += $productPrice; 
             }
         }
 
         $order->setTotalPrice($totalPrice);
         
-        // Set a default order status (make sure to adjust this logic as needed)
-        $defaultOrderStatus = 1; // Replace with your default status ID, or fetch it from the database
+        $defaultOrderStatus = 1; 
 
         $currentOrderStatus = $em->getRepository(OrderStatus::class)->find($defaultOrderStatus);
-        $order->setOrderStatus($currentOrderStatus); // Make sure to have a setter method in your Order entity
+        $order->setOrderStatus($currentOrderStatus);
 
         $em->persist($order);
         $em->flush();

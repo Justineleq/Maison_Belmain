@@ -14,6 +14,7 @@ use Symfony\Component\Security\Http\Attribute\IsGranted;
 #[Route('/recipeofthemonth', name: 'app_recipe_of_the_month_')]
 class RecipeOfTheMonthController extends AbstractController
 {
+    #[IsGranted('ROLE_USER')]
     #[Route('s', name: 'index', methods: ['GET', 'POST'])]
     public function index(Request $request, EntityManagerInterface $entityManager): Response
     {

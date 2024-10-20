@@ -76,12 +76,10 @@ class Order
         return $this->Product;
     }
 
-    public function addProduct(Product $product): static
-    {
+    public function addProduct(Product $product): self {
         if (!$this->Product->contains($product)) {
-            $this->Product->add($product);
+            $this->Product[] = $product;
         }
-
         return $this;
     }
 
